@@ -10,7 +10,7 @@ Excerpt from [the conceptual writing](https://gwangmu.medium.com/sketching-c-the
 
 ## Build Pipeline
 
-C+ aims to _piggyback_ on the existing C infrastructure. The C+-specific build pipeline is divided into two parts: _sugar_ and _salt_. The _sugar_ part translates C+ code into the C equivalent. The _salt_ part hardens the C code with C+ specifications. The idea is that the "sugar" part dissolves every C+ _syntax_ into C, and the "salt" part enforces the C+-specific _semantics_ in a non-intrusive way. The figure below describes the evolution of source code in the build pipeline.
+C+ aims to _piggyback_ on the existing C infrastructure. The C+-specific build pipeline is divided into two parts: _sugar_ and _salt_. The _sugar_ part translates C+ code into the C equivalent. The _salt_ part hardens the C code with C+ specifications. The idea behind is that the "sugar" part dissolves every C+ _syntax_ into C, and the "salt" part enforces the C+-specific _semantics_ in a non-intrusive way. The figure below describes the evolution of source code in the build pipeline.
 
 ![Build Sequence drawio](https://github.com/user-attachments/assets/03fef56c-a3fa-465f-b82c-6eed7c4431c6)
 
