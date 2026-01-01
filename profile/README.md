@@ -1,6 +1,12 @@
 # C+ Language
 
-_C+_ is an extended language that's _perfectly_ compatible with C code. Please take a look at [this](https://gwangmu.medium.com/sketching-c-the-intermediate-language-between-c-and-c-51664ff4a3f8) conceptual writing.
+_C+_ is an extended language that's _perfectly_ compatible with C code. Please take a look at [the conceptual writing](https://gwangmu.medium.com/sketching-c-the-intermediate-language-between-c-and-c-51664ff4a3f8).
+
+## Why?
+
+Excerpt from [the conceptual writing](https://gwangmu.medium.com/sketching-c-the-intermediate-language-between-c-and-c-51664ff4a3f8):
+
+> C might have to remain the bare-minimum system language that interfaces between assembly and human-readable code as a last-resort fallback (before going fully to assembly), but system developers also need high-level language features sometimes. C++ is so cluttered, and Rust is a different language. Why can’t we have a small language extension without going too far from C?
 
 ## Build Pipeline
 
