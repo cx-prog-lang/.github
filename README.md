@@ -6,7 +6,7 @@ _C+_ is an extended language that's _perfectly_ compatible with C code. Please t
 
 C+ aims to _piggyback_ on the existing C infrastructure. The C+-specific build pipeline is divided into two parts: _sugar_ and _salt_. The _sugar_ part translates C+ code into the C equivalent. The _salt_ part hardens the C code with C+ specifications. The figure below describes the evolution of source code in the build pipeline.
 
-<img width="4284" height="5044" alt="image" src="https://github.com/user-attachments/assets/44c87957-4e2f-4b87-b6bd-af1fbed1a548" />
+<img width="4284" height="5044" alt="image" src="https://github.com/user-attachments/assets/47aba448-f4b6-42bb-9d24-b4dd4099b0a3" />
 
 ## Interoperability
 
