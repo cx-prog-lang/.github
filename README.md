@@ -6,7 +6,7 @@ _C+_ is an extended language that's _perfectly_ compatible with C code. Please t
 
 C+ aims to _piggyback_ on the existing C infrastructure. The C+-specific build pipeline is divided into two parts: _sugar_ and _salt_. The _sugar_ part translates C+ code to the C equivalent. The _salt_ part hardens the C code with C+ specifications. The figure below describes the evolution of source code in the build pipeline.
 
-![](https://drive.google.com/file/d/1Q4bc7ziDoCo2uFf5K_LWOTVWwZmce4Vb/view?usp=sharing "Time evolution of the build pipeline")
+![Build pipeline](https://drive.google.com/file/d/1Q4bc7ziDoCo2uFf5K_LWOTVWwZmce4Vb/view?usp=sharing "Time evolution of the build pipeline")
 
 ## Interoperability
 
@@ -20,16 +20,16 @@ In addition to the principles, the translated C+ code should look as close as po
 
 Below are some key interoperability matrices.
 
-|         | C source | C+ source |
-|---------|----------|-----------|
-| Using C header | Direct    | Direct    |
-| Using C+ header | Translated   | Direct    |
+|                     | C source   | C+ source |
+|---------------------|------------|-----------|
+| **Using C header**  | Direct     | Direct    |
+| **Using C+ header** | Translated | Direct    |
 
 **Table**. Using C/C+ headers in C/C+ source code.
 
-|         | C source | C+ source |
-|---------|----------|-----------|
-| C Syntax | Yes      | Almost*   |
-| C+ Syntax | _N/A_    | Yes       |
+|                     | C source | C+ source |
+|---------------------|----------|-----------|
+| **Using C Syntax**  | Yes      | Almost*   |
+| **Using C+ Syntax** | _N/A_    | Yes       |
 
 **Table**. Using C/C+ syntax in C/C+ source code. (*: some restrictions depending on the accompanying C+ syntax.)
