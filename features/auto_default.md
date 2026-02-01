@@ -1,6 +1,6 @@
 # Automatic Default Value
 
-This feature enables developers to specify the _automatic_ default value of data types. When declaring a variable, the default value will be implicitly applied by the compiler, followed by an explicit initialization if it's present. In the case of record types (i.e., struct and union), the explicit initialization is overridden on top of the default value on a per-field basis. A data type will be left _uninitialized_ as per the legacy C standard if no default value was declared for it.
+This feature enables developers to specify the _automatic_ default value of data types. When declaring a variable, the default value will be implicitly applied by the compiler, followed by an explicit initialization if it's present. In the case of record types (i.e., struct and union), the explicit initialization is overwritten on top of the default value on a per-field basis. A data type will be left _uninitialized_ as per the legacy C standard if no default value was declared for it.
 
 ## Syntax
 
