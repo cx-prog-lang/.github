@@ -60,6 +60,21 @@ int main() {
 }
 ```
 
+The expression `default(<data_type>)` can be used outside initializer braces. In this case, `default(<data_type>)` will be treated as a value. For example, the variable `a` will be given `64` as in the factor of `2` of the default value `32`.
+
+```c
+#include <stdio.h>
+
+typedef int MyInt;
+MyInt default = 32;
+
+int main() {
+  int a = default(MyInt) * 2;  // a = 32 * 2;
+  printf("%d\n", a);           // Output: 64
+  return 0;
+}
+```
+
 ## Implementation
 
  - Status: ongoing
