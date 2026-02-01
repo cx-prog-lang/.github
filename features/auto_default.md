@@ -60,17 +60,15 @@ int main() {
 }
 ```
 
-The expression `default(<data_type>)` can be used outside initializer braces. In this case, `default(<data_type>)` will be treated as a value. For example, the variable `a` will be given `64` as in the factor of `2` of the default value `32`.
+The expression `default(<data_type>)` can also be used as the identifier of the default value. In this example, the output will be `1` as `default(struct Test).a` references the default value of the field `a`.
 
 ```c
 #include <stdio.h>
-
-typedef int MyInt;
-MyInt default = 32;
+struct Test { int a; float b; char c; };
+struct Test default = { .a = 1, .c = 'x' };
 
 int main() {
-  MyInt a = default(MyInt) * 2;  // a = 32 * 2;
-  printf("%d\n", a);           // Output: 64
+  printf("%d\n", default(struct Test).a);    // Output: 1
   return 0;
 }
 ```
