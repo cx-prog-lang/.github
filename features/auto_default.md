@@ -50,6 +50,7 @@ In the case of record types, having a variable initialization overrides _every f
 
 ```c
 #include <stdio.h>
+
 struct Test { int a; float b; char c; };
 struct Test default = { .a = 1, .c = 'x' };
 
@@ -64,11 +65,31 @@ Outside the initialization braces, the expression `default(<data_type>)` can als
 
 ```c
 #include <stdio.h>
+
 struct Test { int a; float b; char c; };
 struct Test default = { .a = 1, .c = 'x' };
 
 int main() {
   printf("%d\n", default(struct Test).a);    // Output: 1
+  return 0;
+}
+```
+
+## Caveat
+
+Heap-allocated objects are **not** initialized upon their allocation, as in standard C, the type of allocated objects is determined on the first write access, not at the allocation time ((Link)[https://en.cppreference.com/w/c/language/object.html]). A heap-allocated object should be initialized explicitly using `default(<type_name>)` as in the example below.
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Test { int a; float b; char c; };
+struct Test default = { .a = 1, .c = 'x' };
+
+int main() {
+  struct Test *t = malloc(sizeof(struct Test));
+  *t = default(struct Test);   // Explicit initialization.
+  printf("%d\n", t->a);        // Output: 1
   return 0;
 }
 ```
