@@ -1,6 +1,6 @@
 # Automatic Default Value
 
-This feature enables developers to specify the default value of a data type that the compiler implicitly applies. If an explicit initialization is present, it takes precedence over the default value. The default value is referenceable with `default(<type_name>)`, and explicit initializers can be built based on it. A data type will be left _uninitialized_ as per the legacy C standard if no default value was declared for it.
+This feature enables developers to specify the default value of a data type that the compiler implicitly applies. The default value takes lower precedence to explicit variable initializations. The default value is referenceable with `default(<type_name>)`, and explicit initializers can be built based on it. A data type will be left _uninitialized_ as per the legacy C standard if no default value was declared for it.
 
 ## Syntax
 
