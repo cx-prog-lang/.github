@@ -60,7 +60,7 @@ int main() {
 }
 ```
 
-The expression `default(<data_type>)` can also be used as the identifier of the default value. In this example, the output will be `1` as `default(struct Test).a` references the default value of the field `a`.
+Outside the initialization braces, the expression `default(<data_type>)` can also be used as the identifier of the default value. In this example, the output will be `1` as `default(struct Test).a` references the default value of the field `a`.
 
 ```c
 #include <stdio.h>
