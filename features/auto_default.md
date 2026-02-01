@@ -76,6 +76,7 @@ The implementation is divided into two parts. The first part is, at a text level
     - There is a one-to-one correspondence between the default value and a memory copy per variable.
  - Every operation may be as explicit as possible from the developer's point of view.
     - The default value is recognized as existing only if the code using the data type can see its declaration.
+    - A variable initialization will be done only _once_ either with the default value or with the explicit initializer (which can explicitly be based on the default value).
 
 ### Legacy C Compatibility
 
