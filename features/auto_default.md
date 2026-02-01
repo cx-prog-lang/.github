@@ -69,7 +69,7 @@ typedef int MyInt;
 MyInt default = 32;
 
 int main() {
-  int a = default(MyInt) * 2;  // a = 32 * 2;
+  MyInt a = default(MyInt) * 2;  // a = 32 * 2;
   printf("%d\n", a);           // Output: 64
   return 0;
 }
