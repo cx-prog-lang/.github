@@ -1,6 +1,6 @@
 # Automatic Default Value
 
-This feature enables developers to specify the _automatic_ default value of data types. When declaring a variable, the default value will be implicitly applied by the compiler, followed by an explicit initialization if it's present. In the case of record types (i.e., struct and union), the explicit initialization is overwritten on top of the default value on a per-field basis. A data type will be left _uninitialized_ as per the legacy C standard if no default value was declared for it.
+This feature enables developers to specify the default value of a data type that the compiler implicitly applies. If an explicit initialization is present, it takes precedence over the default value. A data type will be left _uninitialized_ as per the legacy C standard if no default value was declared for it.
 
 ## Syntax
 
@@ -46,7 +46,7 @@ int main() {
 }
 ```
 
-In the case of record types, a variable initialization overrides the default value on a per-field basis. For example, the field `a` of the variable `t` will be `999` instead of `1`, but the field `c` will remain as `x` as in the default value.
+In the case of record types, having a variable initialization overrides _every field_ of the default value (including the fields not specified in the initializer). If the initializer should be built on top of the default value, an expression `default(<data_type>)` should be specified at the beginning of the initializer. For example, the field `a` of the variable `t` will be `999` instead of `1`, but the field `c` will remain as `x` as in the default value.
 
 ```c
 #include <stdio.h>
@@ -54,7 +54,7 @@ struct Test { int a; float b; char c; };
 struct Test default = { .a = 1, .c = 'x' };
 
 int main() {
-  struct Test t = { .a = 999 };   // 'a' will be assigned as '999'.
+  struct Test t = { default(struct Test), .a = 999 };   // 'a' will be assigned as '999'.
   printf("%d %c\n", t.a, t.c);    // Output: 999 x
   return 0;
 }
