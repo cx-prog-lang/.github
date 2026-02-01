@@ -79,7 +79,7 @@ int main() {
 
 Heap-allocated objects are **not** initialized upon their allocation, as in standard C, the type of allocated objects is determined on the first write access, not at the allocation time ((Link)[https://en.cppreference.com/w/c/language/object.html]). A heap-allocated object should be initialized explicitly using `default(<type_name>)` as in the example below.
 
-```
+```c
 #include <stdio.h>
 #include <stdlib.h>
 
