@@ -32,7 +32,7 @@ its declaration should be visible to the code using the data type. For example, 
 ```c
 // test_struct.h
 struct Test { int a; float b; char c; };
-struct Test default;
+extern struct Test default;
 
 // test_struct.c
 struct Test default = { .a = 1, .c = 'x' };
