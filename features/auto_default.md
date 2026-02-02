@@ -1,6 +1,6 @@
 # Automatic Default Value
 
-This feature enables developers to specify the default value of a data type that the compiler implicitly applies. The default value takes lower precedence than explicit variable initializations. The default value is referenceable with `default(<type_name>)` so that explicit initializers can be built based on it. A data type will be left _uninitialized_ as per the legacy C standard if no default value was declared for it.
+This feature enables developers to specify the default value for a data type that the compiler implicitly applies when the type is instantiated. The default value takes lower precedence than explicit variable initializations. The default value is referenceable with `default(<type_name>)` so that explicit initializers can be built based on it. A data type will be left _uninitialized_ as per the legacy C standard if no default value was declared for it.
 
 ## Syntax
 
@@ -46,7 +46,7 @@ int main() {
 }
 ```
 
-In the case of record types, having a variable initialization overrides _every field_ of the default value (including the fields not specified in the initializer). If the initializer should be built on top of the default value, an expression `default(<data_type>)` should be specified at the beginning of the initializer. For example, the field `a` of the variable `t` will be `999` instead of `1`, but the field `c` will remain as `x` as in the default value.
+In the case of record types, having a variable initialization overrides _every field_ of the default value (including the fields not specified in the initializer). If the initializer should be built on top of the default value, an expression `default(<data_type>)` should be specified at the beginning of the initializer. For example, the field `a` of the variable `t` will be `999` instead of `1`, but the field `c` will remain as `x` as in the default value. Notice that if the initializer contains any `default(<data_type>)` (except when it's used inside an expression of a member initializer), every regular member initializer should have a designator.
 
 ```c
 #include <stdio.h>
@@ -77,7 +77,7 @@ int main() {
 
 ## Caveat
 
-Heap-allocated objects are **not** initialized upon allocation because, in standard C, the type of an object is not determined at allocation time (https://en.cppreference.com/w/c/language/object.html). Instead, a heap-allocated object should be initialized explicitly using `default(<type_name>)` as in the example below.
+ - Heap-allocated objects are **not** initialized upon allocation because, in standard C, the type of an object is not determined at allocation time (https://en.cppreference.com/w/c/language/object.html). Instead, a heap-allocated object should be initialized explicitly using `default(<type_name>)` as in the example below.
 
 ```c
 #include <stdio.h>
@@ -90,6 +90,24 @@ int main() {
   struct Test *t = malloc(sizeof(struct Test));
   *t = default(struct Test);   // Explicit initialization.
   printf("%d\n", t->a);        // Output: 1
+  return 0;
+}
+```
+
+ - The nested type's default value is **not** automatically included in their enclosing type's default value. If the enclosing type's default value doesn't specify the nested type's default value, it's automatically initialized as `0` as per the global variable initialization in C. If the enclosing type doesn't define any default value, the entire enclosing type is left uninitialized. In case the enclosing type should have a default value for the nested type, its default value should specify this as in the example below.
+
+```c
+#include <stdio.h>
+
+struct Test { int a; float b; char c; };
+struct Test default = { .a = 1, .c = 'x' };
+
+struct Test2 { int d; struct Test t; };
+struct Test2 default = { .d = 32, .t = default(struct Test) };
+
+int main() {
+  struct Test2 t2;
+  printf("%d\n", t2.t.a);    // Output: 1
   return 0;
 }
 ```
