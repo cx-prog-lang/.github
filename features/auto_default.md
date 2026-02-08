@@ -100,7 +100,7 @@ int main() {
 }
 ```
 
-The expression `default(<data_type>)` references the default value itself if it's not used as an initializer expression. In this example, the output will be `1` as `default(struct Test).a` references the default value of the field `a`.
+The expression `default(<data_type>)` can also reference the default value itself if it's not used as an initializer expression. In this example, the output will be `1` as `default(struct Test).a` references the default value of the field `a`.
 
 ```c
 #include <stdio.h>
