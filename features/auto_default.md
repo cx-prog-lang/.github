@@ -116,7 +116,7 @@ int main() {
 
  - Status: ongoing
 
-The implementation is divided into two parts. The first part is, at a text level, to replace the global variables named `default` with a sufficiently mangled but legitimate C global variable marked with the data type, such as `__<type_name>_default__`, to declare the default value variable. The second part is, at an IR level, to insert `memcpy` that copies the default value variable between every instantiation of the data type and its explicit initialization. The second part is performed only if a default value variable exists for the given data type.
+The implementation is divided into two parts. The first part is, at a text level, to replace the variables named `default` with a sufficiently mangled but legitimate C variable marked with the data type, such as `__<type_name>_default__`, to declare the default value variable. The second part is, at an IR level, to insert `memcpy` (or any equivalent instructions) that copies the default value variable between every instantiation of the data type and its explicit initialization. The second part is performed only if a default value variable exists for the given data type.
 
 ## Discussion
 
@@ -132,4 +132,4 @@ The implementation is divided into two parts. The first part is, at a text level
 
 ### Legacy C Compatibility
 
-This feature is transparent to legacy C code, as declaring a global variable named `default` has been invalid in C.
+This feature is transparent to legacy C code, as declaring a variable named `default` has been invalid in C.
