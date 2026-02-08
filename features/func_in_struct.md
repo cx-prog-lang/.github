@@ -19,7 +19,7 @@ From the referencer's point of view, a function member is exactly the same as a 
 
 ## Example
 
-A function member can mimic an OOP-style static method of a data type. In the following example, a function member `identify` points to the default value `Test_identify` regardless of an explicit initializer.
+A function member can mimic an OOP-style static method of a data type. In the following example, the function member `identify` points to the default value `Test_identify` regardless of an explicit initializer.
 
 ```c
 #include <stdio.h>
