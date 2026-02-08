@@ -19,26 +19,6 @@ From the referencer's point of view, a function member is exactly the same as a 
 
 ## Example
 
-A function member is the syntactic sugar of a function **pointer** member. In the following example, both `func` and `func_ptr` act like function pointer members that can be assigned and called.
-
-```c
-#include <stdio.h>
-
-struct Test {
-  void func();
-  void (*func_ptr)();
-};
-
-void yell() { printf("ha!\n"); }
-
-int main() {
-  struct Test test = { .func = yell, .func_ptr = yell };
-  test.func();      // Output: ha!
-  test.func_ptr();  // Output: ha!
-  return 0;
-}
-```
-
 A function member can mimic an OOP-style static method of a data type. In the following example, a function member `identify` points to the default value `Test_identify` regardless of an explicit initializer.
 
 ```c
