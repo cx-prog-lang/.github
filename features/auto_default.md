@@ -8,7 +8,7 @@ This feature enables developers to specify the default value for a data type tha
 <type_name> default = <default_value>;
 ```
 
-Equivalent to declaring a global variable named `default` as `<type_name>`.
+Equivalent to declaring a variable named `default` to the same scope as the type `<type_name>`.
 
 ## Example
 
