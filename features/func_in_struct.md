@@ -71,4 +71,14 @@ The implementation simply needs to find a function declaration inside a struct d
 
 ### Considered C Design Principle
 
+TODO
+
 ### Legacy C Compatibility
+
+ - Level: Transparent
+
+This feature is transparent to legacy C code, as declaring a function within a structure definition wasn't allowed in standard C.
+
+### Concern
+
+ - It can be confusing (and possibly a source of runtime errors) that an explicit initialization of a struct variable can nullify the default value for function members. A potential mitigation would be to make the function members special and be initialized even in the absence of `default(<data_type>)`, but this can go against the language philosophy of C ("implicit initialization").
