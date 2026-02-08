@@ -12,7 +12,7 @@ Equivalent to declaring a variable named `default` to the same scope as the type
 
 ## Example
 
-Suppose the struct `Test` was declared as below.
+Suppose the global struct `Test` was declared as below.
 
 ```c
 struct Test { int a; float b; char c; };
