@@ -40,31 +40,9 @@ int main() {
 }
 ```
 
-Combined with the [automatic default value](../auto_default.md) feature, a function member can mimic an OOP-style static method of a data type. (Note: this can also be achieved with a regular function pointer member field.)
-
-```c
-#include <stdio.h>
-
-struct Test {
-  void identify();
-};
-
-void Test_identify() { printf("I'm a Test\n"); }
-
-struct Test default = { .identify = Test_identify };
-
-int main() {
-  struct Test test;
-  test.identify();    // Output: I'm a Test
-  return 0;
-}
-```
-
-See [Structure Extension](../struct_ext.md) on how to implement dynamic dispatch (a.k.a., subtype polymorphism) using this.
-
 ## Caveat
 
- - The functions initialized in the default value (as in the second example) are **lost** if a structure instance defines its own explicit initializer. To preserve them, the explicit initializer should specify `default(<data_type>)` at the beginning. For example, the instance `test` will initialize `x` to `300`, while preserving the default value to a function member `identify`.
+ - The functions initialized in the [default value](../auto_default.md) are **lost** if a structure instance defines its own explicit initializer. To preserve them, the explicit initializer should specify `default(<data_type>)` at the beginning. For example, the instance `test` will initialize `x` to `300`, while preserving the default value to a function member `identify`.
 
 ```c
 #include <stdio.h>
@@ -86,4 +64,12 @@ int main() {
 }
 ```
 
+## Implementation
+
+ - Status: Ongoing
+
 ## Discussion
+
+### Considered C Design Principle
+
+### Legacy C Compatibility
