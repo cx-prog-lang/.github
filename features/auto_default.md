@@ -85,7 +85,7 @@ int main() {
 
 ### Deriving or Referencing Default Values
 
-In the case of record types, having a variable initialization overrides _every field_ of the default value (including the fields not specified in the initializer). If the initializer should be built on top of the default value, an expression `default(<data_type>)` should be specified at the beginning of the initializer. For example, the field `a` of the variable `t` will be `999` instead of `1`, but the field `c` will remain as `x` as in the default value. Notice that if the initializer contains any `default(<data_type>)` (except when it's used inside an expression of a member initializer), every regular member initializer should have a designator.
+In the case of record types, having a variable initialization overrides _every field_ of the default value (including the fields not specified in the initializer). If the initializer should be built on top of the default value, the initializer expression `default(<data_type>)` can be specified at the beginning of the initializer braces. For example, the field `a` of the variable `t` will be `999` instead of `1`, but the field `c` will remain as `x` as in the default value.
 
 ```c
 #include <stdio.h>
@@ -100,7 +100,7 @@ int main() {
 }
 ```
 
-Outside the initialization braces, the expression `default(<data_type>)` can also be used as the identifier of the default value. In this example, the output will be `1` as `default(struct Test).a` references the default value of the field `a`.
+The expression `default(<data_type>)` references the default value itself if it's not used as an initializer expression. In this example, the output will be `1` as `default(struct Test).a` references the default value of the field `a`.
 
 ```c
 #include <stdio.h>
@@ -114,9 +114,25 @@ int main() {
 }
 ```
 
+To initialize all array elements with the default value of the element type's default value, the initializer expression `default(<data_type>)...` can be specified at the beginning of the initializer braces. In this example, the array `arr` will have `10` for each element except for the 1st element with `20`.
+
+```c
+#include <stdio.h>
+
+int default = 10;
+
+int main() {
+  int arr[3] = { default(int)..., [1] = 20 };   // arr == { 10, 20, 10 }
+  printf("%d %d %d\n", arr[0], arr[1], arr[2]); // Output: 10 20 10
+  return 0;
+};
+```
+
+Notice that the initializer expressions after `default(<data_type>)` or `default(<data_type>)...` should have designators.
+
 ## Caveat
 
- - Heap-allocated objects are **not** initialized upon allocation because, in standard C, the type of an object is not determined at allocation time (https://en.cppreference.com/w/c/language/object.html). Instead, a heap-allocated object should be initialized explicitly using `default(<type_name>)` as in the example below.
+ - Heap-allocated objects are **not** initialized upon allocation because, in standard C, the type of an object is not determined at allocation time (https://en.cppreference.com/w/c/language/object.html). Instead, a heap-allocated object should be initialized explicitly using `default(<data_type>)` as in the example below.
 
 ```c
 #include <stdio.h>
@@ -133,7 +149,7 @@ int main() {
 }
 ```
 
- - The nested type's default value is **not** automatically included in their enclosing type's default value because, if the nested type's default value isn't specified in the enclosing type's default value, it will automatically be empty-initialized as per the C standard (https://en.cppreference.com/w/c/language/struct_initialization.html), and if the enclosing type doesn't define any default value at all, the nested type will also be left uninitialized. Instead, should a nested type be initialized as its default value inside the enclosing type, it should be explicitly initialized using `default(<type_name>)`, as in the example below.
+ - The nested type's default value is **not** automatically included in their enclosing type's default value because, if the nested type's default value isn't specified in the enclosing type's default value, it will automatically be empty-initialized as per the C standard (https://en.cppreference.com/w/c/language/struct_initialization.html), and if the enclosing type doesn't define any default value at all, the nested type will also be left uninitialized. Instead, should a nested type be initialized as its default value inside the enclosing type, it should be explicitly initialized using `default(<data_type>)`, as in the example below.
 
 ```c
 #include <stdio.h>
