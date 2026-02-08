@@ -17,32 +17,29 @@ A function member is treated in the exact same way as a function pointer member.
 
 ## Example
 
-A function member can be used to denote a strong correlation between a function and a structure instance. In the following example, two structure instances, `john` and `mark`, are initialized with different functions. As a result, two instances print different results even if the structure type is the same.
+A function member is the syntactic sugar for a function **pointer** member. In the following example, both `func` and `func_ptr` act like function pointer members that can be assigned and called.
 
 ```c
 #include <stdio.h>
 
-struct Dancer {
-  void do_flip();
+struct Test {
+  void func();
+  void (*func_ptr)();
 };
 
-void do_back_flip() { printf("boing\n"); }
-void do_front_flip() { printf("bwang\n"); }
+void yell() { printf("ha!\n"); }
 
 int main() {
-  struct Dancer john = { .do_flip = do_back_flip };
-  struct Dancer mark = { .do_flip = do_front_flip };
-
-  john.do_flip();    // Output: boing
-  mark.do_flip();    // Output: bwang
-
+  struct Test test = { .func = yell, .func_ptr = yell };
+  test.func();      // Output: ha!
+  test.func_ptr();  // Output: ha!
   return 0;
 }
 ```
 
 ## Caveat
 
- - The functions initialized in the [default value](../auto_default.md) are **lost** if a structure instance defines its own explicit initializer. To preserve them, the explicit initializer should specify `default(<data_type>)` at the beginning. For example, the instance `test` will initialize `x` to `300`, while preserving the default value to a function member `identify`.
+ - The function members initialized in the [default value](../auto_default.md) are **lost** if a structure instance defines its own explicit initializer. To preserve them, the explicit initializer should specify `default(<data_type>)` at the beginning. For example, the instance `test` will initialize `x` to `300`, while preserving the default value to a function member `identify`.
 
 ```c
 #include <stdio.h>
