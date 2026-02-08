@@ -1,6 +1,6 @@
 # C+ Language
 
-_C+_ is a language extension that's _perfectly_ compatible with legacy C code. Please take a look at [the conceptual writing](https://gwangmu.medium.com/sketching-c-the-intermediate-language-between-c-and-c-51664ff4a3f8). In a word, C+ aims to be a unofficial ~~bootleg~~ version of C.
+_C+_ is a language extension that's _perfectly_ compatible with legacy C code. C+ aims to be a new unofficial version of C so that each feature can readily be merged into standard C at any moment. Please take a look at [the conceptual writing](https://gwangmu.medium.com/sketching-c-the-intermediate-language-between-c-and-c-51664ff4a3f8).
 
 ## Why?
 
@@ -37,7 +37,7 @@ Below are some key interoperability matrices.
 
 |                     | C source | C+ source |
 |---------------------|----------|-----------|
-| **Using C Syntax**  | Yes      | Almost*   |
+| **Using C Syntax**  | Yes      | Yes       |
 | **Using C+ Syntax** | _N/A_    | Yes       |
 
-**Table**. Using C/C+ syntax in C/C+ source code. (*: some restrictions depending on the accompanying C+ syntax.)
+**Table**. Using C/C+ syntax in C/C+ source code.
