@@ -192,4 +192,6 @@ The implementation is divided into two parts. The first part is, at a text level
 
 ### Legacy C Compatibility
 
+ - Level: Transparent
+
 This feature is transparent to legacy C code, as declaring a variable named `default` has been invalid in C.
