@@ -10,7 +10,7 @@ This feature enables developers to specify the default value for a data type tha
 
 Equivalent to declaring a variable named `default` to the same scope as the type `<type_name>`.
 
-## Example
+## Basic Example
 
 Suppose the global struct `Test` was declared as below.
 
@@ -46,6 +46,26 @@ int main() {
 }
 ```
 
+As another example, developers can specify the default value for an enum, as shown below.
+
+```c
+// enum.h
+enum Animal { A_COW, A_DOG, A_CAT };
+static enum Animal default = A_COW;
+
+// main.c
+#include <stdio.h>
+#include <enum.h>
+
+int main() {
+  enum Animal animal;      // animal == A_COW
+  printf("%d\n", animal);  // Output: 0 (A_COW)
+  return 0;
+}
+```
+
+## Deriving or Referencing Default Values
+
 In the case of record types, having a variable initialization overrides _every field_ of the default value (including the fields not specified in the initializer). If the initializer should be built on top of the default value, an expression `default(<data_type>)` should be specified at the beginning of the initializer. For example, the field `a` of the variable `t` will be `999` instead of `1`, but the field `c` will remain as `x` as in the default value. Notice that if the initializer contains any `default(<data_type>)` (except when it's used inside an expression of a member initializer), every regular member initializer should have a designator.
 
 ```c
@@ -71,24 +91,6 @@ struct Test default = { .a = 1, .c = 'x' };
 
 int main() {
   printf("%d\n", default(struct Test).a);    // Output: 1
-  return 0;
-}
-```
-
-As another example, developers can specify the default value of an enum type, as shown in the example below.
-
-```c
-// enum.h
-enum Animal { A_COW, A_DOG, A_CAT };
-static enum Animal default = A_COW;
-
-// main.c
-#include <stdio.h>
-#include <enum.h>
-
-int main() {
-  enum Animal animal;      // animal == A_COW
-  printf("%d\n", animal);  // Output: 0 (A_COW)
   return 0;
 }
 ```
