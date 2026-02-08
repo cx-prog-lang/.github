@@ -72,11 +72,13 @@ As another example, developers can specify the default value for an enum or a po
 enum Animal { A_COW, A_DOG, A_CAT };
 static enum Animal default = A_COW;
 
+// ptr.h
+static int *default = 0;
+
 // main.c
 #include <stdio.h>
 #include <enum.h>
-
-int *default = NULL;
+#include <ptr.h>
 
 int main() {
   enum Animal animal;              // animal == A_COW
