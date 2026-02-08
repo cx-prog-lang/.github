@@ -18,7 +18,7 @@ Suppose the global struct `Test` was declared as below.
 struct Test { int a; float b; char c; };
 ```
 
-Then, declaring a global variable named `default` in a global scope as below will define the default value of the struct `Test`.
+Then, declaring a global variable named `default` as below will define the default value of the struct `Test`.
 
 ```c
 struct Test default = { .a = 1, .c = 'x' };
