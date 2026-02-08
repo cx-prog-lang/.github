@@ -108,7 +108,7 @@ Among all types in C (https://en.cppreference.com/w/c/language/type.html), the f
 
 For array types, each array element will be initialized to its default value if it exists. Array types or type aliases from `typedef`s **cannot** have their own default values.
 
-All pointer types get a default value of `void *` by default if it exists. This is overridden if a specific pointer type defines its own default value.
+By default, all pointer types get a default value of `void *` if it exists. This is overridden if a specific pointer type defines its own default value.
 
 ## Caveat
 
