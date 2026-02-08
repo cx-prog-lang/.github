@@ -17,7 +17,7 @@ A function member is treated in the exact same way as a function pointer member.
 
 ## Example
 
-A function member is the syntactic sugar for a function **pointer** member. In the following example, both `func` and `func_ptr` act like function pointer members that can be assigned and called.
+A function member is the syntactic sugar of a function **pointer** member. In the following example, both `func` and `func_ptr` act like function pointer members that can be assigned and called.
 
 ```c
 #include <stdio.h>
