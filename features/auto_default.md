@@ -65,7 +65,7 @@ int main() {
 }
 ```
 
-As another example, developers can specify the default value for an enum, as shown below.
+As another example, developers can specify the default value for an enum or a pointer, as shown below.
 
 ```c
 // enum.h
@@ -76,9 +76,12 @@ static enum Animal default = A_COW;
 #include <stdio.h>
 #include <enum.h>
 
+int *default = NULL;
+
 int main() {
-  enum Animal animal;      // animal == A_COW
-  printf("%d\n", animal);  // Output: 0 (A_COW)
+  enum Animal animal;              // animal == A_COW
+  int *ptr;                        // ptr == NULL
+  printf("%d %p\n", animal, ptr);  // Output: 0 (null)
   return 0;
 }
 ```
