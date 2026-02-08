@@ -110,6 +110,8 @@ For array types, each array element will be initialized to its default value if 
 
 For pointer types, the default value of `void *` is a special default value that applies to _all_ pointer types by default. This is overridden if a specific pointer type defines its own default value. Nested pointer types don't share the same default value with un-nested counterparts (i.e., `int **` is treated as a different pointer type than `int *` in terms of a default value).
 
+All default values are compile-time constants.
+
 ## Caveat
 
  - Heap-allocated objects are **not** initialized upon allocation because, in standard C, the type of an object is not determined at allocation time (https://en.cppreference.com/w/c/language/object.html). Instead, a heap-allocated object should be initialized explicitly using `default(<type_name>)` as in the example below.
