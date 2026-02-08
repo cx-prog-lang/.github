@@ -70,6 +70,7 @@ int main() {
   *test1 = default(struct Test);
   *test2 = (struct Test){};
   *test3 = (struct Test){ .x = 30 };
+  // No explicit initialization for 'test4'.
 
   test1.identify();    // Output: I'm a Test
   test2.identify();    // Output: I'm a Test
