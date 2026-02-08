@@ -107,7 +107,7 @@ int main() {
 
  - Status: Ongoing
 
-The implementation first needs to find a function declaration within a struct definition and enclose the identifier with `(*` and `)`. Then, at the IR level, it should insert store instructions to copy the default values of  function members after explicit initializers and compound literal assignments.
+The implementation first needs to find a function declaration within a struct definition and enclose the identifier with `(*` and `)`. Then, at the IR level, it should insert the store instructions to copy the default values of  function members after explicit initializers and compound literal assignments.
 
 ## Discussion
 
