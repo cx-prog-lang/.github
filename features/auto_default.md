@@ -133,7 +133,7 @@ int main() {
 }
 ```
 
- - The nested type's default value is **not** automatically included in their enclosing type's default value; if the nested type's default value wasn't specified in the enclosing type's default value, it's automatically empty-initialized as per the C standard (https://en.cppreference.com/w/c/language/struct_initialization.html), and if the enclosing type didn't define any default value at all, the nested type is also left uninitialized. Instead, should a nested type be initialized as its default value inside the enclosing type, it should be explicitly initialized using `default(<type_name>)`, as in the example below.
+ - The nested type's default value is **not** automatically included in their enclosing type's default value because, if the nested type's default value isn't specified in the enclosing type's default value, it will automatically be empty-initialized as per the C standard (https://en.cppreference.com/w/c/language/struct_initialization.html), and if the enclosing type doesn't define any default value at all, the nested type will also be left uninitialized. Instead, should a nested type be initialized as its default value inside the enclosing type, it should be explicitly initialized using `default(<type_name>)`, as in the example below.
 
 ```c
 #include <stdio.h>
