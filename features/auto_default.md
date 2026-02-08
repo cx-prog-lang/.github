@@ -106,9 +106,9 @@ Among all types in C (https://en.cppreference.com/w/c/language/type.html), the f
  - Pointer types
  - Atomic types
 
-Array types **cannot** have their own default values. Instead, each array element will be initialized to its default value if it exists. Type aliases by `typedef`s also cannot have their own default values.
+For array types, each array element will be initialized to its default value if it exists. Array types or type aliases from `typedef`s **cannot** have their own default values.
 
-Exceptionally, all pointer types get a default value of `void *` by default if it exists. This is overridden if a specific pointer type defines its own default value.
+All pointer types get a default value of `void *` by default if it exists. This is overridden if a specific pointer type defines its own default value.
 
 ## Caveat
 
