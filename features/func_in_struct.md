@@ -61,3 +61,7 @@ TODO
  - Level: Transparent
 
 This feature is transparent to legacy C code, as declaring a function within a structure definition wasn't allowed in standard C.
+
+### Concerns
+
+Ideally, a function member should be translated into a **constant** function pointer to eliminate the possibility of (presumably erratic) runtime manipulation. However, this will preclude a `default(<data_type>)` assignment if the structure contains a function member because it attempts to re-assign a constant member field.
