@@ -1,6 +1,6 @@
 # Function Type Structure Members
 
-This feature allows a structure type to declare a function member field. It's equivalent to a function **pointer** member, whose [default value](../auto_default.md) is implicitly included in the struct's initializers and compound literals.
+This feature allows a structure type to declare a function member field. It's equivalent to a function **pointer** member, whose [default value](../auto_default.md) is implicitly included in the struct's explicit initializers and compound literals.
 
 ## Syntax
 
@@ -13,13 +13,13 @@ Equivalent to declaring a function inside a structure definition.
 
 ## Specification
 
-A function member is a function pointer whose default value is implied in the containing structure's initializer and compound literal. For this matter, a structure _should_ define a default value if it contains any function members.
+A function member is a function pointer whose default value is implied in the containing structure's explicit initializer and compound literal. For this matter, a structure _should_ define a default value if it contains any function members. The function member's initial value specified in the explicit initializer will be ignored.
 
 From the referencer's point of view, a function member is exactly the same as a function pointer member.
 
 ## Example
 
-A function member can mimic an OOP-style static method of a data type. In the following example, the function member `identify` points to the default value `Test_identify` regardless of the existence of explicit initializers.
+A function member can mimic an OOP-style static method of a data type. In the following example, the function member `identify` points to the default value `Test_identify` regardless of explicit initializers.
 
 ```c
 #include <stdio.h>
@@ -46,7 +46,61 @@ Combined with the [structure extension](../struct_ext.md) feature, this can impl
 
 ## Caveat
 
- - As heap-allocated variables are left uninitialized at allocation time, 
+ - As heap-allocated variables are left uninitialized after allocation (irrespective of the existence of default values), function members are also left **uninitialized** in heap-allocated variables. To initialize function members, heap-allocated variables should be explicitly initialized with `default(<data_type>)` or any compound literals of the corresponding struct type. In the following example, the function member `identify` of the variables `test1`, `test2`, and `test3` is correctly initialized, while that of `test4` is not.
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Test {
+  int x;
+  void identify();
+};
+
+void Test_identify() { printf("I'm a Test\n"); }
+
+struct Test default = { .identify = Test_identify };
+
+int main() {
+  struct Test *test1 = malloc(sizeof(struct Test));
+  struct Test *test2 = malloc(sizeof(struct Test));
+  struct Test *test3 = malloc(sizeof(struct Test));
+  struct Test *test4 = malloc(sizeof(struct Test));
+
+  *test1 = default(struct Test);
+  *test2 = (struct Test){};
+  *test3 = (struct Test){ .x = 30 };
+
+  test1.identify();    // Output: I'm a Test
+  test2.identify();    // Output: I'm a Test
+  test3.identify();    // Output: I'm a Test
+  test4.identify();    // Runtime error
+  return 0;
+}
+```
+
+ - As the members of a structure, function members are also taken into account in the explicit positional initialization. The following example initializes `test.x` as `10` and `test.y` as `20`; the `0` in the position of `test.identify` will be ignored.
+
+```c
+#include <stdio.h>
+
+struct Test {
+  int x;
+  void identify();
+  int y;
+};
+
+void Test_identify() { printf("I'm a Test\n"); }
+
+struct Test default = { .identify = Test_identify };
+
+int main() {
+  struct Test test = { 10, 0, 20 };
+  printf("%d %d\n", test.x, test.y);  // Output: 10 20
+  test.identify();                    // Output: I'm a Test
+  return 0;
+}
+```
 
 ## Implementation
 
