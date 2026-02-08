@@ -64,6 +64,23 @@ int main() {
 }
 ```
 
+## Specification
+
+Among all types in C (https://en.cppreference.com/w/c/language/type.html), the following types may have a default value:
+
+ - Basic types (e.g., int, char, float, ...)
+ - Enumerated types
+ - Structure types
+ - Union types
+ - Pointer types
+ - Atomic types
+
+For array types, each array element will be initialized to its default value if it exists. Array types or type aliases from `typedef`s **cannot** have their own default values.
+
+For pointer types, the default value of `void *` is a special default value that applies to _all_ pointer types by default. This is overridden if a specific pointer type defines its own default value. Nested pointer types don't share the same default value with un-nested counterparts (i.e., `int **` is treated as a different pointer type than `int *` in terms of a default value).
+
+All default values are compile-time constants.
+
 ## Deriving or Referencing Default Values
 
 In the case of record types, having a variable initialization overrides _every field_ of the default value (including the fields not specified in the initializer). If the initializer should be built on top of the default value, an expression `default(<data_type>)` should be specified at the beginning of the initializer. For example, the field `a` of the variable `t` will be `999` instead of `1`, but the field `c` will remain as `x` as in the default value. Notice that if the initializer contains any `default(<data_type>)` (except when it's used inside an expression of a member initializer), every regular member initializer should have a designator.
@@ -94,23 +111,6 @@ int main() {
   return 0;
 }
 ```
-
-## Specification
-
-Among all types in C (https://en.cppreference.com/w/c/language/type.html), the following types may have a default value:
-
- - Basic types (e.g., int, char, float, ...)
- - Enumerated types
- - Structure types
- - Union types
- - Pointer types
- - Atomic types
-
-For array types, each array element will be initialized to its default value if it exists. Array types or type aliases from `typedef`s **cannot** have their own default values.
-
-For pointer types, the default value of `void *` is a special default value that applies to _all_ pointer types by default. This is overridden if a specific pointer type defines its own default value. Nested pointer types don't share the same default value with un-nested counterparts (i.e., `int **` is treated as a different pointer type than `int *` in terms of a default value).
-
-All default values are compile-time constants.
 
 ## Caveat
 
