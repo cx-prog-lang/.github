@@ -1,6 +1,6 @@
 # C+ Language
 
-_C+_ is an extended language that's _perfectly_ compatible with C code. Please take a look at [the conceptual writing](https://gwangmu.medium.com/sketching-c-the-intermediate-language-between-c-and-c-51664ff4a3f8).
+_C+_ is a language extension that's _perfectly_ compatible with legacy C code. Please take a look at [the conceptual writing](https://gwangmu.medium.com/sketching-c-the-intermediate-language-between-c-and-c-51664ff4a3f8). In a word, C+ aims to be a unofficial ~~bootleg~~ version of C.
 
 ## Why?
 
