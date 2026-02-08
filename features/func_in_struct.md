@@ -13,7 +13,7 @@ Equivalent to declaring a function inside a structure definition.
 
 ## Specification
 
-Since a function member is always initialized to a default value, the containing structure _should_ define a default value if it contains a function member.
+Since a function member is always initialized to the default value, the containing structure _should_ define a default value if it contains a function member.
 
 From the referencer's point of view, a function member is exactly the same as a function pointer member.
 
