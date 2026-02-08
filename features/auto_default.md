@@ -75,6 +75,39 @@ int main() {
 }
 ```
 
+As another example, developers can specify the default value of an enum type, as shown in the example below.
+
+```c
+// enum.h
+enum Animal { A_COW, A_DOG, A_CAT };
+static enum Animal default = A_COW;
+
+// main.c
+#include <stdio.h>
+#include <enum.h>
+
+int main() {
+  enum Animal animal;      // animal == A_COW
+  printf("%d\n", animal);  // Output: 0 (A_COW)
+  return 0;
+}
+```
+
+## Specification
+
+Among all types in C (https://en.cppreference.com/w/c/language/type.html), the following types may have a default value:
+
+ - Basic types (e.g., int, char, float, ...)
+ - Enumerated types
+ - Structure types
+ - Union types
+ - Pointer types
+ - Atomic types
+
+Array types **cannot** have their own default values. Instead, each array element will be initialized to its default value if it exists. Type aliases by `typedef`s also cannot have their own default values.
+
+Exceptionally, all pointer types inherit a default value from `void *` if it exists. This is overridden if a specific pointer type defines its own default value.
+
 ## Caveat
 
  - Heap-allocated objects are **not** initialized upon allocation because, in standard C, the type of an object is not determined at allocation time (https://en.cppreference.com/w/c/language/object.html). Instead, a heap-allocated object should be initialized explicitly using `default(<type_name>)` as in the example below.
