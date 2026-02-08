@@ -65,6 +65,8 @@ int main() {
 
  - Status: Ongoing
 
+The implementation simply needs to find a function declaration inside a struct definition and enclose the identifier with `(*` and `)`.
+
 ## Discussion
 
 ### Considered C Design Principle
