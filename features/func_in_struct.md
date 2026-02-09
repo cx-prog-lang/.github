@@ -80,7 +80,7 @@ int main() {
 }
 ```
 
- - As the members of a structure, function members are also taken into account in the explicit positional initialization. The following example initializes `test.x` as `10` and `test.y` as `20`; the `0` in the position of `test.identify` will be ignored.
+ - As the members of a structure, function members are also taken into account in the explicit positional initialization. The following example initializes `test.x` as `10` and `test.y` as `20`; the `0` in the position of `test.identify` will be ignored. Recommendation: Use designated initializers if there are function members.
 
 ```c
 #include <stdio.h>
