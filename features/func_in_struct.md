@@ -123,4 +123,4 @@ This feature is transparent to legacy C code, as declaring a function within a s
 
 ### Concerns
 
-Ideally, a function member should be translated into a **constant** function pointer to eliminate the possibility of (presumably erratic) runtime manipulation. However, this will preclude a `default(<data_type>)` assignment (e.g., for heap-allocated variables) because it will attempt to re-assign a constant member field.
+Ideally, a function member should be translated into a **constant** function pointer to eliminate the possibility of (presumably erratic) runtime manipulation. However, this will prevent initialization of heap-allocated objects (e.g., by assigning `default(<data_type>)`) because it will attempt to reassign a constant member field on the way.
