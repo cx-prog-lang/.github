@@ -8,6 +8,7 @@ This feature introduces a new operator called the _method call operator_ that ca
 ```c
 <struct_var> . <func_ptr_member_name> { [<arg_list>] }
 ```
+
     - `<struct_var>`: Structure variable (or any expression that has a structure type).
     - `<func_ptr_member_name>`: Function pointer member name.
     - `<arg_list>` (optional): List of arguments for the function pointer.
