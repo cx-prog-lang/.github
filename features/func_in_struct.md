@@ -46,7 +46,7 @@ Combined with the [structure extension](../struct_ext.md) feature, this can impl
 
 ## Caveat
 
- - As heap-allocated variables are left uninitialized after allocation (irrespective of the existence of default values), function members are also left **uninitialized** in heap-allocated variables. To initialize function members, heap-allocated variables should be explicitly initialized with `default(<data_type>)` or any compound literals of the corresponding struct type. In the following example, the function member `identify` of the variables `test1`, `test2`, and `test3` is correctly initialized, while that of `test4` is not.
+ - As heap-allocated objects are left uninitialized after allocation (irrespective of the existence of default values), function members are also left **uninitialized** in them. To initialize function members, heap-allocated objects should be explicitly initialized with `default(<data_type>)` or any compound literals of the corresponding struct type. In the following example, the function member `identify` of the variables `test1`, `test2`, and `test3` is correctly initialized, while that of `test4` is not.
 
 ```c
 #include <stdio.h>
