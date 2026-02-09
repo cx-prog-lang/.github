@@ -12,7 +12,7 @@ This feature introduces a new operator called the _method call operator_ that ca
 
  - `<struct_var>`: structure variable (or any expression that has a structure type)
  - `<func_ptr_member_name>`: function pointer member's name
- - `<arg_list>`: list of arguments for the function pointer.
+ - `<arg_list>`: list of arguments for the function pointer
 
 Equivalent to a combination of a direct member access operator followed by a call operator, whose 0th argument is a reference to the structure instance. (i.e., `<struct_var> . <func_ptr_member_name> ( &<struct_var> [,<arg_list>] )`)
 
@@ -23,7 +23,7 @@ Equivalent to a combination of a direct member access operator followed by a cal
 ```
  - `<struct_ptr>`: structure pointer (or any expression that has a structure pointer type)\
  - `<func_ptr_member_name>`: function pointer member's name
- - `<arg_list>`: list of arguments for the function pointer.
+ - `<arg_list>`: list of arguments for the function pointer
 
 Equivalent to a combination of an indirect member access operator followed by a call operator, whose 0th argument is a structure pointer. (i.e., `<struct_ptr> -> <func_ptr_member_name> ( <struct_ptr> [,<arg_list>] )`)
 
