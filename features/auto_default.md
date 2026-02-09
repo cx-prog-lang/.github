@@ -136,7 +136,7 @@ Notice that the initializer expressions after `default(<data_type>)` or `default
 
 ## Caveat
 
- - Heap-allocated objects are **not** initialized upon allocation because, in standard C, the type of an object is not determined at allocation time (https://en.cppreference.com/w/c/language/object.html). Instead, a heap-allocated object should be initialized explicitly using `default(<data_type>)` as in the example below.
+ - Heap-allocated objects are **not** initialized upon allocation because, in standard C, the type of an object is not determined at allocation time (https://en.cppreference.com/w/c/language/object.html). Instead, a heap-allocated object should be initialized explicitly using `default(<data_type>)` or compound literals as in the example below.
 
 ```c
 #include <stdio.h>
