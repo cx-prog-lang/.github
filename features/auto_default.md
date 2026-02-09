@@ -25,7 +25,7 @@ For array types, each array element will be initialized to its default value if 
 
 For pointer types, the default value of `void *` is a special default value that applies to _all_ pointer types by default. This is overridden if a specific pointer type defines its own default value. Nested pointer types don't share the same default value with un-nested counterparts (e.g., `int **` is treated as a different pointer type than `int *` in terms of a default value).
 
-All default values are compile-time constants.
+All default values are compile-time constants. Also, it's illegal to take a reference of `default(<data_type>)`.
 
 ## Example
 
