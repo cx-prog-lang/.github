@@ -45,8 +45,7 @@ struct Test default = { .a = 1, .c = 'x' };
 
 In this example, the default value of the field `b` will be `0` as per the initial value of unspecified fields in C ("empty-initialized", https://en.cppreference.com/w/c/language/struct_initialization.html).
 
-A default value can be defined anywhere after the definition of the data type (should it be defined, such as structs), but in order to mark the data type to have a default value,
-its declaration should be visible to the code using the data type. For example, in the following example, the variable `t` will be automatically initialized with the default value, assuming `test_struct.c` and `main.c` are eventually linked together.
+A default value can be defined anywhere after the data type definition (should it be defined), but its declaration should be visible to the code using the corresponding data type. For example, in the following example, the variable `t` will be automatically initialized with the default value, assuming `test_struct.c` and `main.c` are eventually linked together.
 
 ```c
 // test_struct.h
