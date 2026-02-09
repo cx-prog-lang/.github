@@ -113,7 +113,9 @@ The implementation first needs to find a function declaration within a struct de
 
 ### Considered C Design Principle
 
-TODO
+ - Language semantics should be clearly linked to the low-level implementation.
+   - Data representation-wise, function members are equivalent to function pointer members.
+   - Function member initialization is done with the containing structure's initialization.
 
 ### Legacy C Compatibility
 
