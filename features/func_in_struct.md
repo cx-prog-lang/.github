@@ -96,7 +96,7 @@ void Test_identify() { printf("I'm a Test\n"); }
 struct Test default = { .identify = Test_identify };
 
 int main() {
-  struct Test test = { 10, 0, 20 };
+  struct Test test = { 10, 0, 20 };   // '0' for 'identify' will be ignored.
   printf("%d %d\n", test.x, test.y);  // Output: 10 20
   test.identify();                    // Output: I'm a Test
   return 0;
