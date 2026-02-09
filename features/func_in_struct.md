@@ -75,7 +75,7 @@ int main() {
   test1.identify();    // Output: I'm a Test
   test2.identify();    // Output: I'm a Test
   test3.identify();    // Output: I'm a Test
-  test4.identify();    // Runtime error
+  test4.identify();    // Undefined behavior
   return 0;
 }
 ```
