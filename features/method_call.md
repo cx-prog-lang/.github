@@ -29,8 +29,6 @@ Equivalent to a combination of an indirect member access operator followed by a 
 
 ## Specification
 
-The method call operator is a ternary operator that accepts three 
+The first parameter to the operator (i.e., `<struct_var>` or `<struct_ptr>`) can be an expression. In this case, the expression is evaluated only once.
 
-Parallel to the member access operator (`.` and `->`), the method call operator also comes in two flavors: the direct one (`. ... { }`) and the indirect one (`-> ... { }`).
-
-Both eventually call the function pointer member with the provided argument list, but the direct one works with a structure variable  inserts a reference to the containing structure instance before the argument list. The indirect one, on the other hand, 
+The method call operator can also call [function members](../func_in_struct.md).
