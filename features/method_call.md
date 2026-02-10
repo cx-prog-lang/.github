@@ -37,7 +37,7 @@ The method call operator can also call [function members](../func_in_struct.md).
 
 ## Example
 
-In practice, a method call operator is a shorthand for a member access operator followed by a call operator. The operator acts on any function pointer members, including [function members](../func_in_struct.md), as long as the 0th argument is the structure pointer. In the following example, all three calls invoke the same function `func`. Notice that `func` specifies the 0th argument as a pointer to the structure that's intended to be the member of.
+In practice, a method call operator is a shorthand for a member access operator followed by a call operator. The operator acts on any function pointer members, including [function members](../func_in_struct.md), provided that the 0th argument is the structure pointer. In the following example, all three calls invoke the same function `func`. Notice that `func` specifies the 0th argument as a pointer to the structure that's intended to be the member of.
 
 ```c
 #include <stdio.h>
