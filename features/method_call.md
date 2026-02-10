@@ -34,3 +34,68 @@ The first parameter to the operator (i.e., `<struct_var>` or `<struct_ptr>`) can
 Because of the property of the method call operator, the called function pointer members (and their pointee functions) _should_ specify the containing structure's pointer as the 0th argument.
 
 The method call operator can also call [function members](../func_in_struct.md).
+
+## Example
+
+In practice, a method call operator is a shorthand for a member access operator followed by a call operator. The operator acts on any function pointer members, including [function members](../func_in_struct.md), as long as the 0th argument is the structure pointer. In the following example, all three calls invoke the same function `func`. Notice that `func` specifies the 0th argument as a pointer to the structure that's intended to be the member of.
+
+```c
+#include <stdio.h>
+
+struct Test {
+  void (*func_ptr)(struct Test *self, int p);
+  void func_mem(struct Test *self, int p);
+};
+
+void func(struct Test *self, int q) {
+  printf("[func] %d\n", q);
+}
+
+struct Test default = { .func_ptr = func, .func_mem = func };
+
+int main() {
+  struct Test test;
+
+  test.func_ptr{1};         // Output: [func] 1
+  test.func_mem{2};         // Output: [func] 2
+  test.func_ptr(&test, 3);  // Output: [func] 3
+
+  return 0;
+}
+```
+
+The 0th argument of a method call operator can be used to reference other members of the same structure instance, allowing a structure to mimic an OOP-style object. In this example, both function members `up` and `down` operate on the structure's data member `count`.
+
+```c
+#include <stdio.h>
+
+struct Counter {
+  int count;
+  void up(struct Counter *self);
+  void down(struct Counter *self);
+};
+
+void Counter_up(struct Counter *self) { self->count++; }
+void Counter_down(struct Counter *self) { self->count--; }
+
+struct Counter default = {
+  .count = 0,
+  .up = Counter_up,
+  .down = Counter_down
+};
+
+int main() {
+  struct Counter counter;
+  printf("%d\n", counter.count);   // Output: 0
+
+  counter.up{}
+  printf("%d\n", counter.count);   // Output: 1
+
+  counter.down{}
+  printf("%d\n", counter.count);   // Output: 0
+
+  return 0;
+}
+```
+
+Combined with the [structure extension](../struct_ext.md) feature, this can implement dynamic dispatch (a.k.a., subtype polymorphism).
