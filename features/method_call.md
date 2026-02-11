@@ -21,7 +21,7 @@ Equivalent to a combination of a direct member access operator followed by a cal
 ```c
 <struct_ptr> -> <func_ptr_member_name> { [<arg_list>] }
 ```
- - `<struct_ptr>`: structure pointer (or any expression that has a structure pointer type)\
+ - `<struct_ptr>`: structure pointer (or any expression that has a structure pointer type)
  - `<func_ptr_member_name>`: function pointer member's name
  - `<arg_list>`: list of arguments for the function pointer
 
