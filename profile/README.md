@@ -1,6 +1,6 @@
 # C+ Language
 
-_C+_ is a language extension that's _near-perfectly_ compatible with legacy C code without any adaptation. C+ aims to be an unofficial version of C, so that each feature can be readily merged into standard C at any time. 
+_C+_ is a language extension that's _near-perfectly_ compatible with legacy C code without adaptation. C+ aims to be an unofficial version of C, so that each feature can be readily merged into standard C at any time. 
 
 ## Why?
 
