@@ -186,4 +186,4 @@ Variables are left uninitialized by default.
 ### Legacy C Compatibility
 
 
-This feature is **transparent** to non-exotic legacy C code (unless it redefines `default` with a macro), as declaring a variable named `default` has been invalid in C.
+This feature is **transparent** to non-exotic legacy C code (not redefining `default` with a macro), as declaring a variable named `default` has been invalid in C.
