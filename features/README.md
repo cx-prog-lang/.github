@@ -9,5 +9,6 @@ This directory introduces the features of the C+ languages built on top of the s
  - [Type Generic Macro](./type_gen.md): pass data types as the arguments to a data type or a function.
  - [Structure Implicit Copy Callback](./impl_struct_copy.md): define a callback for an implicit struct-to-struct copy.
  - [Structure Cleanup Callback](./impl_struct_cleanup.md): define a callback for a structure cleanup.
+ - [Type Groups for Generic Selection](./type_group_gen.md): match the same expression to a group of types.
  - [Pointer Bound Checking Compiler Option](./ptr_boundck.md): enable pointer bound checking for every pointer.
  - [Pointer Sanitization Compiler Option](./ptr_sanitize.md): sanitize every pointer to `0` after memory deallocation.
