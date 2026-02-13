@@ -25,8 +25,8 @@ C+ aims to piggyback on the well-established C build pipeline. To do so, C+ just
 
 ## Design Principle
 
- 1. No name mangling for user-defined externally visible symbols.
- 2. Minimum hidden or implicit operations. (If inevitable, tight-scoping of such.)
- 3. Clear and simple link between the language specification and its implementation.
- 4. Only include the features that are collectively expected to cover large development needs.
- 5. (For memory safety) Minimum-to-no amount of legacy code adaptation.
+ 1. No adaptation required for non-exotic legacy C code.
+ 2. No name mangling for user-defined externally visible symbols.
+ 3. Minimum hidden or implicit operations. (If inevitable, tight-scoping of such.)
+ 4. Clear and simple link between the language specification and its implementation.
+ 5. Only include the features that are collectively expected to cover large development needs.
