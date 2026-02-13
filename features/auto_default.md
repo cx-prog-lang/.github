@@ -181,10 +181,9 @@ The implementation is divided into two parts. The first part is, at a text level
 
 ### Considered C Design Principle
 
- - Variables are left uninitialized by default.
+Variables are left uninitialized by default.
 
 ### Legacy C Compatibility
 
- - Level: Transparent
 
-This feature is transparent to legacy C code, as declaring a variable named `default` has been invalid in C.
+This feature is **transparent** to non-exotic legacy C code (unless it redefines `default` with a macro), as declaring a variable named `default` has been invalid in C.
