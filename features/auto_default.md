@@ -1,6 +1,6 @@
 # Automatic Default Value
 
-This feature enables developers to specify the default value for a data type that the compiler implicitly applies when the type is instantiated. The default value takes lower precedence than explicit variable initializations. The default value is referenceable with `default(<type_name>)` so that explicit initializers can be built based on it. A data type will be left _uninitialized_ as per the legacy C standard if no default value was declared for it.
+This feature enables developers to specify the automatic default value for a data type when it is instantiated with the **automatic storage duration** (i.e., local variables). The default value is replaced with explicit variable initializations if they exist. The default value is referenceable with `default(<type_name>)` so that explicit initializers can be built on top of it. A data type will be left _uninitialized_ as per the legacy C standard if no default value was declared for it.
 
 ## Syntax
 
@@ -152,6 +152,8 @@ int main() {
   return 0;
 }
 ```
+
+ - In a similar vein, static or thread-local variables will also **not** be initialized with the default value. Instead, they'll be empty-initialized as in standard C.
 
  - The nested type's default value is **not** automatically included in their enclosing type's default value because, if the nested type's default value isn't specified in the enclosing type's default value, it will automatically be empty-initialized as per the C standard (https://en.cppreference.com/w/c/language/struct_initialization.html), and if the enclosing type doesn't define any default value at all, the nested type will also be left uninitialized. Instead, should a nested type be initialized as its default value inside the enclosing type, it should be explicitly initialized using `default(<data_type>)`, as in the example below.
 
