@@ -156,8 +156,6 @@ int main() {
  - In a similar vein, static or thread-local variables will **not** be initialized with the default value automatically. Instead, they'll be empty-initialized by default as in standard C. Should they be initialized with the default value, the constant definition of the default value should exist in the same translation unit. For example, both `test1` and `test2` cause compiler errors in the example below.
 
 ```c
-#include <stdio.h>
-
 extern int default;
 char default = 'x';
 const double default = 0.0f;
