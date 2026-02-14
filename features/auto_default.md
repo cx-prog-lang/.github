@@ -76,8 +76,8 @@ static int *default = 0;
 
 // main.c
 #include <stdio.h>
-#include <enum.h>
-#include <ptr.h>
+#include "enum.h"
+#include "ptr.h"
 
 int main() {
   enum Animal animal;              // animal == A_COW
@@ -153,7 +153,22 @@ int main() {
 }
 ```
 
- - In a similar vein, static or thread-local variables will also **not** be initialized with the default value. Instead, they'll be empty-initialized as in standard C.
+ - In a similar vein, static or thread-local variables will also **not** be initialized with the default value. Instead, they'll be empty-initialized as in standard C by default. Should they be initialized with the default value, the constant definition of the default value should exist in the same translation unit. For example, both `test1` and `test2` cause compiler errors in the example below.
+
+```c
+// init_v1.h
+extern int default;
+char default = 'x';
+const double default = 0.0f;
+
+// main.c
+#include <stdio.h>
+#include "init_v1.h"
+
+int test1 = default(int);        // Compile-time error: the definition of default(int) doesn't exist.
+char test2 = default(char);      // Compile-time error: default(char) is not compile-time constant.
+double test3 = default(double);  // Ok: default(double) is defined AND constant.
+```
 
  - The nested type's default value is **not** automatically included in their enclosing type's default value because, if the nested type's default value isn't specified in the enclosing type's default value, it will automatically be empty-initialized as per the C standard (https://en.cppreference.com/w/c/language/struct_initialization.html), and if the enclosing type doesn't define any default value at all, the nested type will also be left uninitialized. Instead, should a nested type be initialized as its default value inside the enclosing type, it should be explicitly initialized using `default(<data_type>)`, as in the example below.
 
