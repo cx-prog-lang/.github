@@ -8,5 +8,8 @@ This directory introduces the features of the C+ languages built on top of the s
  - [Switch Structure Members](./switch_in_struct.md): declare function aliases ("switches") in a structure that doesn't take up an actual memory space.
  - [Canonical Object Destructor](./obj_dtor.md): define a canonical function to destroy an object per data type.
  - [Type Generic Macro](./type_gen.md): pass data types as the arguments to a data type or a function.
+
+Below are the features under consideration.
+
  - [Pointer Bound Checking Compiler Option](./ptr_boundck.md): enable pointer bound checking for every pointer.
  - [Pointer Sanitization Compiler Option](./ptr_sanitize.md): sanitize every pointer to `0` after memory deallocation.
