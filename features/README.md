@@ -1,6 +1,6 @@
-# C+ Features
+# Cx Features
 
-This directory introduces the features of the C+ languages built on top of the standard C language.
+This directory introduces the features of the Cx languages built on top of the standard C language.
 
  - [Object Default Value](./auto_default.md): define a custom default value per data type.
  - [Function Type Structure Members](./func_in_struct.md): declare a function type member field in a structure.
