@@ -6,7 +6,7 @@ _Cx_ is a language extension that's _near-perfectly_ compatible with legacy C co
 
 Excerpt from [the conceptual writing](https://gwangmu.medium.com/sketching-c-the-intermediate-language-between-c-and-c-51664ff4a3f8):
 
-> C might have to remain the bare-minimum system language that interfaces between assembly and human-readable code [...], but system developers also need high-level language features sometimes. Cx+ is so cluttered, and Rust is a different language. Why can’t we have a small language extension without going too far from C?
+> C might have to remain the bare-minimum system language that interfaces between assembly and human-readable code [...], but system developers also need high-level language features sometimes. C++ is so cluttered, and Rust is a different language. Why can’t we have a small language extension without going too far from C?
 
 ## Goal
 
