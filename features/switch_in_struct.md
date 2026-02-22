@@ -16,7 +16,7 @@ Equivalent to a list of function declarations (`<func_decl>`) followed by a `swi
 
 ## Specification
 
-Similar to [function members](./func_in_struct.md), function alias members are also initialized to the [default value](./auto_default.md). The default value for the function member aliases of the nested structure will be ignored. It's prohibited to change function alias members at runtime.
+Function alias members are initialized to the [default value](./auto_default.md) of the direct parent structure; any initialization by other means will be ignored. It's prohibited to change function alias members at runtime.
 
 Calling a function alias member is the same as calling a function (pointer) member. Function alias members also have _function pointer_ types, not _function_ types.
 
