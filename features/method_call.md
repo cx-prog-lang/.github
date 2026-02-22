@@ -31,9 +31,7 @@ Equivalent to a combination of an indirect member access operator followed by a 
 
 The first parameter to the operator (i.e., `<struct_var>` or `<struct_ptr>`) can be an expression. In this case, the expression is evaluated only once.
 
-Because of the property of the method call operator, the called function pointer members (and their pointee functions) _should_ specify the containing structure's pointer as the 0th argument.
-
-The method call operator can also call [function members](./func_in_struct.md) or [function alias members](./switch_in_struct.md).
+Because of the property of the method call operator, the callable members (and their pointee functions) _should_ specify the containing structure's pointer as the 0th argument.
 
 ## Example
 
