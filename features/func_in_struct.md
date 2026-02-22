@@ -15,7 +15,7 @@ Equivalent to declaring a function inside a structure definition.
 
 A function member is a function pointer whose default value is implied in the containing structure's explicit initializer and compound literal. For this matter, a structure _should_ define a default value if it contains any function members. The function member's initial value specified in the explicit initializer will be ignored.
 
-From the referencer's point of view, a function member is exactly the same as a function pointer member.
+From the referencer's point of view, a function member is exactly the same as a function pointer member: function members have _function pointer_ types, not _function_ types.
 
 ## Example
 
