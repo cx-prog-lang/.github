@@ -143,3 +143,25 @@ int main() {
   return 0;
 }
 ```
+
+ - Unlike function members, function alias members don't require initialization before access. For example, the following call to `func` is valid.
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Test {
+switch:
+  void func();
+}
+
+void foo() { printf("foo\n"); }
+
+struct Test default = { .func = foo };
+
+int main() {
+  struct Test *t = malloc(sizeof(struct Test));  // '*t' is uninitialized, but can still call 'func'.
+  t->func();                                     // Output: foo
+  return 0;
+}
+```
