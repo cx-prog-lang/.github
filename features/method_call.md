@@ -70,7 +70,7 @@ int main() {
 }
 ```
 
-The 0th argument of a method call operator can be used to reference the structure itself, allowing a structure to mimic an OOP-style object. In this example, both function members `up` and `down` operate on the structure's data member `count`.
+The 0th argument of a method call operator can be used to access the structure itself, allowing a structure to mimic an OOP-style object. In this example, both function members `up` and `down` operate on the structure's data member `count`.
 
 ```c
 #include <stdio.h>
