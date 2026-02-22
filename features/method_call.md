@@ -98,4 +98,9 @@ int main() {
 }
 ```
 
-Combined with the [structure extension](../struct_ext.md) feature, this can implement dynamic dispatch (a.k.a., subtype polymorphism).
+# Discussion
+
+## Expected Benefits to Legacy C
+
+ - **B3. Canonicalization**: provides a canonical way to use the functions that are intended to act on a structure.
+ - **B4. Code Clarity**: removes verbosity in the combination of a member access and a call.
