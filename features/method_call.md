@@ -1,6 +1,6 @@
 # Method Call Operator
 
-This feature introduces a new operator called a _method call operator_ that calls a structure's function pointer member with a reference to the structure instance as the 0th argument.
+This feature introduces a new operator, _method call operator_, that calls a structure's function pointer member, function member, or function alias member with the 0th argument of a reference to the structure instance.
 
 ## Syntax
 
