@@ -47,7 +47,7 @@ int main() {
 }
 ```
 
-In case a structure with function alias members is nested in another structure, the functions assigned to them via the default value of the enclosing structure will be ignored. In the following example, the `func` of `struct Test` points to `foo`, no matter when it was reassigned by the enclosing structure.
+In case a structure with function alias members is nested in another structure, the functions assigned to them via the default value of the enclosing structure will be ignored. In the following example, the `func` of `struct Test` points to `foo` no matter when it was reassigned through the enclosing structure's default value.
 
 ```c
 #include <stdio.h>
