@@ -138,7 +138,7 @@ int main() {
   struct Counter c;
   c.incr(&c);    // Call 'incr' using a regular call operator.
   c.incr{};      // Call 'incr' using a method call operator.
-  printf("%d\n", c.i);
+  printf("%d\n", c.i);    // Output: 2
 
   return 0;
 }
