@@ -16,7 +16,7 @@ Equivalent to a list of function declarations (`<func_decl>`) followed by a `swi
 
 ## Specification
 
-Similar to [function members](./func_in_struct.md), function alias members are also initialized to the [default value](./auto_default.md). It's prohibited to change function alias members at runtime.
+Similar to [function members](./func_in_struct.md), function alias members are also initialized to the [default value](./auto_default.md). The default value for the function member aliases of the nested structure will be ignored. It's prohibited to change function alias members at runtime.
 
 Calling a function alias member is the same as calling a function (pointer) member. Function alias members also have _function pointer_ types, not _function_ types.
 
@@ -47,9 +47,36 @@ int main() {
 }
 ```
 
+In case a structure with function alias members is nested in another structure, the functions assigned to them via the default value of the enclosing structure will be ignored. In the following example, the `func` of `struct Test` points to `foo`, no matter when it was reassigned by the enclosing structure.
+
+```c
+#include <stdio.h>
+
+struct Test {
+switch:
+  void func();
+};
+
+struct BiggerTest {
+  struct Test test;
+};
+
+void foo() { printf("foo\n"); }
+void bar() { printf("bar\n"); }
+
+struct Test default = { .func = foo };
+struct BiggerTest default = { .test.func = bar };    // '.test.func' will be ignored.
+
+int main() {
+  struct BiggerTest bigger_test;
+  bigger_test.test.func();        // Output: foo, because the 'func' of 'struct Test' was linked to 'foo'.
+  return 0;
+}
+```
+
 ## Caveat
 
- - Function alias members **cannot** simulate the virtual functions in OOP, while regular function members could, because they are associated with the actual function at compile-time by their type. In the following example, the variable `as_alias_ext` would yield `foo`, while `not_alias_ext` would yield `bar`.
+ - Function alias members **cannot** simulate the virtual functions in OOP, while regular function members could, because they are associated with the actual function at compile-time by their type. In the following example, the variable `as_alias_2` would yield `foo`, while `not_alias_2` would yield `bar`.
 
 ```c
 #include <stdio.h>
@@ -57,38 +84,35 @@ int main() {
 void foo() { printf("foo\n"); }
 void bar() { printf("bar\n"); }
 
-struct AsAlias {
+struct AsAlias1 {
 switch:
   void func();
 };
 
-struct AsAliasExtended {
-  int i;
-
+struct AsAlias2 {
 switch:
   void func();
 };
 
-struct NotAlias {
+struct NotAlias1 {
   void func();
 };
 
-struct NotAliasExtended {
+struct NotAlias2 {
   void func();
-  int i;
 };
 
-struct AsAlias default = { .func = foo };
-struct NotAlias default = { .func = foo };
-struct AsAliasExtended default = { .func = bar };
-struct NotAliasExtended default = { .func = bar };
+struct AsAlias1 default = { .func = foo };
+struct NotAlias1 default = { .func = foo };
+struct AsAlias2 default = { .func = bar };
+struct NotAlias2 default = { .func = bar };
 
 int main() {
-  struct AsAliasExtended as_alias_ext;
-  struct NotAliasExtended not_alias_ext;
+  struct AsAlias2 as_alias_2;
+  struct NotAlias2 not_alias_2;
 
-  (*(struct AsAlias *)&as_alias_ext).func();    // Output: foo, because the type of the struct is 'struct AsAlias'.
-  (*(struct NotAlias *)&not_alias_ext).func();  // Output: bar, because 'func' of 'not_alias_ext' is 'bar'.
+  (*(struct AsAlias1 *)&as_alias_2).func();    // Output: foo, because the type of the struct is 'struct AsAlias1'.
+  (*(struct NotAlias1 *)&not_alias_2).func();  // Output: bar, because 'func' of 'not_alias_2' is 'bar'.
 
   return 0;
 }
