@@ -191,6 +191,14 @@ The implementation is divided into two parts. The first part is, at a text level
 
 ## Discussion
 
+### Expected Benefits to Legacy C
+
+ - Reduced undefined behavior
+     - By constraining the accidental lack of user-side initialization.
+ - Improved code clarity
+     - By eliminating explicit initialization on every use.
+     - By providing a canonical way to get a default value (`default<data_type>`).
+
 ### Considered C Design Principle
 
 Variables are left uninitialized by default.
