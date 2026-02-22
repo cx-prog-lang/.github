@@ -16,9 +16,7 @@ Equivalent to a list of function declarations (`<func_decl>`) followed by a `swi
 
 ## Specification
 
-Similar to [function members](../func_in_struct.md), function alias members are also linked to the functions specified in the default value. Calling a function alias member is the same as calling a function (pointer) member.
-
-Function alias members have _function pointer_ types, not _function_ types.
+Similar to [function members](../func_in_struct.md), function alias members are also linked to the functions specified in the default value. Calling a function alias member is the same as calling a function (pointer) member. Function alias members also have _function pointer_ types, not _function_ types.
 
 It's prohibited to change function alias members at runtime.
 
