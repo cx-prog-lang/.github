@@ -76,7 +76,7 @@ int main() {
 
 ## Caveat
 
- - Function alias members **cannot** simulate the virtual functions in OOP, while regular function members could, because they are associated with the actual function at compile-time by their type. In the following example, the variable `as_alias_2` would yield `foo`, while `not_alias_2` would yield `bar`.
+ - Function alias members **cannot** simulate the virtual functions in OOP (while regular function members could) because they are associated with the actual function at compile-time by their type. In the following example, the variable `as_alias_2` would yield `foo`, while `not_alias_2` would yield `bar`.
 
 ```c
 #include <stdio.h>
