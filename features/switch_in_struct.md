@@ -22,7 +22,7 @@ Similar to [function members](../func_in_struct.md), function alias members are 
 
 Calling a function alias member is the same as calling a function (pointer) member. Function alias members also have _function pointer_ types, not _function_ types.
 
-Function alias members are associated with a structure _type_, not its instance: an alias's actual function is decided by the _type_ of the structure in the member access or [method call](../method_call.md) operators, not by the memory value of the structure.
+Function alias members are associated with a structure _type_, not its instance: an alias's actual function is decided by the _type_ of the structure in the member access or [method call](../method_call.md) operators, not by its memory value.
 
 ## Example
 
