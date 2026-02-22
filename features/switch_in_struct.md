@@ -111,7 +111,7 @@ int main() {
   struct AsAlias2 as_alias_2;
   struct NotAlias2 not_alias_2;
 
-  (*(struct AsAlias1 *)&as_alias_2).func();    // Output: foo, because the type of the struct is 'struct AsAlias1'.
+  (*(struct AsAlias1 *)&as_alias_2).func();    // Output: foo, because the type of the struct in the expression is 'struct AsAlias1'.
   (*(struct NotAlias1 *)&not_alias_2).func();  // Output: bar, because 'func' of 'not_alias_2' is 'bar'.
 
   return 0;
