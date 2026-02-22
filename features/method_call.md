@@ -1,6 +1,6 @@
 # Method Call Operator
 
-This feature introduces a new operator called _method call operator_ that calls a structure's callable member (i.e., function pointer member, [function member](./func_in_struct.md), or [function alias member](./switch_in_struct.md)) with the 0th argument of a reference to the structure instance.
+This feature introduces a new operator called _method call operator_, which calls a structure's callable member (i.e., function pointer member, [function member](./func_in_struct.md), or [function alias member](./switch_in_struct.md)) with the 0th argument of a reference to the structure instance.
 
 ## Syntax
 
