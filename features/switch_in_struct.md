@@ -57,7 +57,41 @@ int main() {
 void foo() { printf("foo\n"); }
 void bar() { printf("bar\n"); }
 
+struct AsAlias {
+switch:
+  void func();
+};
 
+struct AsAliasExtended {
+  int i;
+
+switch:
+  void func();
+};
+
+struct NotAlias {
+  void func();
+};
+
+struct NotAliasExtended {
+  void func();
+  int i;
+};
+
+struct AsAlias default = { .func = foo };
+struct NotAlias default = { .func = foo };
+struct AsAliasExtended default = { .func = bar };
+struct NotAliasExtended default = { .func = bar };
+
+int main() {
+  struct AsAliasExtended as_alias_ext;
+  struct NotAliasExtended not_alias_ext;
+
+  (*(struct AsAlias *)&as_alias_ext).func();    // Output: foo, because the type of the struct is 'struct AsAlias'.
+  (*(struct NotAlias *)&not_alias_ext).func();  // Output: bar, because 'func' of 'not_alias_ext' is 'bar'.
+
+  return 0;
+}
 ```
 
  - Function alias members are **not** equivalent to static member functions in other languages (primarily in C++), as in function alias members can also access the structure instance via an argument. In the example below, the structure variable `c` declares a function alias member `incr`, which modifies `c` via an argument pointer to itself. (See also: [method call operator](./method_call.md))
@@ -70,7 +104,7 @@ struct Counter {
 
 switch:
   void incr();
-}
+};
 
 void Counter_incl(struct Counter *self) { self->i++; }
 
