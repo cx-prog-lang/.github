@@ -4,7 +4,7 @@ This directory introduces the features of the Cx languages built on top of the s
 
  - [Object Default Value](./auto_default.md): define a custom default value per data type.
  - [Function Type Structure Members](./func_in_struct.md): declare a function type member field in a structure.
- - [Function Alias Structure Members](./switch_in_struct.md): declare function aliases ("switches") in a structure that doesn't take up an actual memory space.
+ - [Function Alias Structure Members](./switch_in_struct.md): declare function aliases in a structure that doesn't take up an actual memory space.
  - [Internal Structure Members](./internal_member.md): indicate the structure members that function (alias) members are only expected to access directly.
  - [Method Call Operator](./method_call.md): call a structure member with a reference to the structure instance as the 0th argument.
  - [Canonical Object Destructor](./obj_dtor.md): define a canonical function to destroy an object per data type.
