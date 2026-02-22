@@ -52,7 +52,11 @@ void func(struct Test *self, int q) {
   printf("[func] %d\n", q);
 }
 
-struct Test default = { .func_ptr = func, .func_mem = func, .func_alias = func };
+struct Test default = {
+  .func_ptr = func,
+  .func_mem = func,
+  .func_alias = func
+};
 
 int main() {
   struct Test test;
