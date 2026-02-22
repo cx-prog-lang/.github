@@ -118,7 +118,7 @@ int main() {
 }
 ```
 
- - Function alias members are **not** equivalent to static member functions in other languages (primarily in C++), as in function alias members can also access the structure instance via an argument. In the example below, the structure variable `c` declares a function alias member `incr`, which modifies `c` via an argument pointer to itself. (See also: [method call operator](./method_call.md))
+ - Function alias members are **not** equivalent to static member functions in other languages (primarily in C++), as function alias members can access the structure instance via an argument. In the example below, the structure variable `c` declares a function alias member `incr`, which modifies `c` via an argument pointer to itself. (See also: [method call operator](./method_call.md))
 
 ```c
 #include <stdio.h>
