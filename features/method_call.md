@@ -33,11 +33,11 @@ The first parameter to the operator (i.e., `<struct_var>` or `<struct_ptr>`) can
 
 Because of the property of the method call operator, the called function pointer members (and their pointee functions) _should_ specify the containing structure's pointer as the 0th argument.
 
-The method call operator can also call [function members](../func_in_struct.md).
+The method call operator can also call [function members](./func_in_struct.md) or [function alias members](./switch_in_struct.md).
 
 ## Example
 
-In practice, a method call operator is a shorthand for a member access operator followed by a call operator. The operator acts on any function pointer members, including [function members](../func_in_struct.md), provided that the 0th argument is the structure pointer. In the following example, all three calls invoke the same function `func`. Notice that `func` specifies the 0th argument as a pointer to the structure that's intended to be the member of.
+In practice, a method call operator is a shorthand for a member access operator followed by a call operator. The operator acts on any function pointer members, including [function members](./func_in_struct.md), provided that the 0th argument is the structure pointer. In the following example, all three calls invoke the same function `func`. Notice that `func` specifies the 0th argument as a pointer to the structure that's intended to be the member of.
 
 ```c
 #include <stdio.h>
