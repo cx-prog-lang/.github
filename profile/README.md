@@ -29,4 +29,12 @@ Cx aims to piggyback on the well-established C build pipeline. To do so, Cx just
  2. No name mangling for user-defined externally visible symbols.
  3. Minimum hidden or implicit operations. (If inevitable, tight-scoping of such.)
  4. Clear and simple link between the language specification and its implementation.
- 5. Only the features that are collectively expected to cover large development needs.
+ 5. Only the features that are collectively expected to benefit legacy C.
+
+## Benefit Categories
+
+Cx features consider the following categories of potential benefits to legacy C:
+
+ - **Code Resiliency/Safety**: improve code resiliency and safety against any future uses or changes.
+ - **Development Productivity**: promote productivity in using the language.
+ - **Canonicalization**: provide a canonical way to implement idiomatic functionalities.
