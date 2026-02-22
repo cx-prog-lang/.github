@@ -16,11 +16,11 @@ Equivalent to a list of function declarations (`<func_decl>`) followed by a `swi
 
 ## Specification
 
-Similar to [function members](../func_in_struct.md), function alias members are also initialized to the [default value](../auto_default.md). It's prohibited to change function alias members at runtime.
+Similar to [function members](./func_in_struct.md), function alias members are also initialized to the [default value](./auto_default.md). It's prohibited to change function alias members at runtime.
 
 Calling a function alias member is the same as calling a function (pointer) member. Function alias members also have _function pointer_ types, not _function_ types.
 
-Function alias members are associated with a structure _type_, not its instance: an alias's actual function is decided by the _type_ of the structure in the member access or [method call](../method_call.md) operators, not by its memory value.
+Function alias members are associated with a structure _type_, not its instance: an alias's actual function is decided by the _type_ of the structure in the member access or [method call](./method_call.md) operators, not by its memory value.
 
 ## Example
 
@@ -60,7 +60,7 @@ void bar() { printf("bar\n"); }
 
 ```
 
- - Function alias members are **not** equivalent to static member functions in other languages (primarily in C++), as in function alias members can also access the structure instance via an argument. In the example below, the structure variable `c` declares a function alias member `incr`, which modifies `c` via an argument pointer to itself. (See also: [method call operator](../method_call.md))
+ - Function alias members are **not** equivalent to static member functions in other languages (primarily in C++), as in function alias members can also access the structure instance via an argument. In the example below, the structure variable `c` declares a function alias member `incr`, which modifies `c` via an argument pointer to itself. (See also: [method call operator](./method_call.md))
 
 ```c
 #include <stdio.h>
