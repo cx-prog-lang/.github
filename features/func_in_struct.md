@@ -112,7 +112,7 @@ The implementation first needs to find a function declaration within a struct de
 ### Expected Benefits to Legacy C
 
  - **B1. Code Resiliency/Safety**: prevents function misuse by clearly indicating the function's relevance to a structure.
- - **B2. Development Productivity**: facilitates indexing a function that was intended to be used with a structure.
+ - **B2. Development Productivity**: facilitates indexing the functions intended to be used with a structure.
  - **B3. Canonicalization**: provides a language-suggested way to indicate the function's relevance to a structure.
  - **B4. Code Clarity**: eliminates the need for separate documentation of a function's relevance to a structure.
 
