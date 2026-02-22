@@ -49,7 +49,7 @@ int main() {
 
 ## Caveat
 
- - Function alias members **cannot** simulate OOP-style virtual functions, while regular function members could. In the following example,
+ - Function alias members **cannot** simulate the virtual functions in OOP, while regular function members could. In the following example,
 
 ```c
 #include <stdio.h>
