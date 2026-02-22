@@ -35,7 +35,7 @@ Because of the property of the method call operator, the callable members (and t
 
 ## Example
 
-In practice, a method call operator is a shorthand for a member access operator followed by a call operator. The operator acts on any callable members (i.e., function pointer member, [function member](./func_in_struct.md), or [function alias member](./switch_in_struct.md)), provided that the 0th argument is the structure pointer. In the following example, all three calls invoke the same function `func`. Notice that `func` specifies the 0th argument as a pointer to the structure that's intended to be the member of.
+In practice, a method call operator is a shorthand for a member access operator followed by a call operator. The operator acts on any callable members (i.e., function pointer member, [function member](./func_in_struct.md), or [function alias member](./switch_in_struct.md)), provided that the 0th argument is the structure pointer. In the following example, all four calls invoke the same function `func`. Notice that `func` specifies the 0th argument as a pointer to the structure that's intended to be the member of.
 
 ```c
 #include <stdio.h>
@@ -43,20 +43,24 @@ In practice, a method call operator is a shorthand for a member access operator 
 struct Test {
   void (*func_ptr)(struct Test *self, int p);
   void func_mem(struct Test *self, int p);
+
+switch:
+  void func_alias(struct Test *self, int p);
 };
 
 void func(struct Test *self, int q) {
   printf("[func] %d\n", q);
 }
 
-struct Test default = { .func_ptr = func, .func_mem = func };
+struct Test default = { .func_ptr = func, .func_mem = func, .func_alias = func };
 
 int main() {
   struct Test test;
 
   test.func_ptr{1};         // Output: [func] 1
   test.func_mem{2};         // Output: [func] 2
-  test.func_ptr(&test, 3);  // Output: [func] 3
+  test.func_alias{3};       // Output: [func] 3
+  test.func_ptr(&test, 4);  // Output: [func] 4
 
   return 0;
 }
