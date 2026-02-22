@@ -111,11 +111,11 @@ The implementation first needs to find a function declaration within a struct de
 
 ## Discussion
 
-### Considered C Design Principle
+### Expected Benefits to Legacy C
 
- - Language semantics should be clearly linked to the low-level implementation.
-   - Data representation-wise, function members are equivalent to function pointer members.
-   - Function member initialization is done with the containing structure's initialization.
+ - More intuitive language syntax
+   - By providing an intuitive way to support function member fields in C.
+ - Support for OOP-style coding style 
 
 ### Legacy C Compatibility
 
