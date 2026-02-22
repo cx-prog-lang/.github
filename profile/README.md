@@ -35,6 +35,6 @@ Cx aims to piggyback on the well-established C build pipeline. To do so, Cx just
 
 Cx features consider the following categories of potential benefits to legacy C:
 
- - **Code Resiliency/Safety**: improve code resiliency and safety against any future uses or changes.
- - **Development Productivity**: promote productivity in using the language.
- - **Canonicalization**: provide a canonical way to implement idiomatic functionalities.
+ - **B1. Code Resiliency/Safety**: improve code resiliency and safety against any future uses or changes.
+ - **B2. Development Productivity**: promote productivity in using the language.
+ - **B3. Canonicalization**: provide a canonical way to implement idiomatic functionalities.
