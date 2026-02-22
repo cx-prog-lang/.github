@@ -42,8 +42,6 @@ int main() {
 }
 ```
 
-Combined with the [structure extension](../struct_ext.md) feature, this can implement dynamic dispatch (a.k.a., subtype polymorphism).
-
 ## Caveat
 
  - As heap-allocated objects are left uninitialized after allocation (irrespective of the existence of default values), function members are also left **uninitialized** in them. To initialize function members, heap-allocated objects should be explicitly initialized with `default(<data_type>)` or any compound literals of the corresponding struct type. In the following example, the function member `identify` of the variables `test1`, `test2`, and `test3` is correctly initialized, while that of `test4` is not.
@@ -113,9 +111,10 @@ The implementation first needs to find a function declaration within a struct de
 
 ### Expected Benefits to Legacy C
 
- - More intuitive language syntax
-   - By providing an intuitive way to support function member fields in C.
- - Support for OOP-style coding style 
+ - **B1. Code Resiliency/Safety**: prevents function misuse by clearly indicating the function's relevance to a structure.
+ - **B2. Development Productivity**: facilitates indexing a function that was intended to be used with a structure.
+ - **B3. Canonicalization**: provides a language-suggested way to indicate the function's relevance to a structure.
+ - **B4. Code Clarity**: eliminates the need for separate documentation of a function's relevance to a structure.
 
 ### Legacy C Compatibility
 
