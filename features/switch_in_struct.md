@@ -16,7 +16,7 @@ Equivalent to a list of function declarations (`<func_decl>`) followed by a `swi
 
 ## Specification
 
-Function alias members are initialized to the [default value](./auto_default.md) of the direct parent structure; any initialization by other means will be ignored. It's prohibited to change function alias members at runtime.
+Function alias members are initialized to the [default value](./auto_default.md) of the direct parent structure. It's prohibited to change function alias members at runtime.
 
 Calling a function alias member is the same as calling a function (pointer) member. Function alias members also have _function pointer_ types, not _function_ types.
 
@@ -47,7 +47,7 @@ int main() {
 }
 ```
 
-In case a structure with function alias members is nested in another structure, the functions assigned to them via the default value of the enclosing structure will be ignored. In the following example, the `func` of `struct Test` points to `foo` regardless of whether it was reassigned through the enclosing structure's default value.
+A function alias member should be initialized through its direct parent struct's default value; it's impossible to indirectly initialize it via the default value of the enclosing structure. In the following example, the attempt to initialize `func` through `struct BiggerTest` will generate a compile error because `struct BiggerTest` is not a direct parent struct of `func`.
 
 ```c
 #include <stdio.h>
@@ -65,7 +65,7 @@ void foo() { printf("foo\n"); }
 void bar() { printf("bar\n"); }
 
 struct Test default = { .func = foo };
-struct BiggerTest default = { .test.func = bar };    // '.test.func' will be ignored.
+//struct BiggerTest default = { .test.func = bar };    // Compile error: 'func' cannot be indirectly initialized.
 
 int main() {
   struct BiggerTest bigger_test;
@@ -144,7 +144,7 @@ int main() {
 }
 ```
 
- - Unlike function members, function alias members don't require initialization before access. For example, the following call to `func` is valid.
+ - Unlike function members, function alias members don't require initialization before access, including indirect initialization through the enclosing structure. For example, the following call to `func` is valid.
 
 ```c
 #include <stdio.h>
@@ -153,15 +153,20 @@ int main() {
 struct Test {
 switch:
   void func();
-}
+};
+
+struct BiggerTest {
+  struct Test t;
+};
 
 void foo() { printf("foo\n"); }
 
 struct Test default = { .func = foo };
 
 int main() {
-  struct Test *t = malloc(sizeof(struct Test));  // '*t' is uninitialized, but can still call 'func'.
-  t->func();                                     // Output: foo
+  struct BiggerTest *bt =
+    malloc(sizeof(struct BiggerTest));    // 'bt->t' is uninitialized, but can still call 'func'.
+  bt->t.func();                           // Output: foo
   return 0;
 }
 ```
