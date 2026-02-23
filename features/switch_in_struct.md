@@ -127,7 +127,7 @@ struct Counter {
   int i;
 
 switch:
-  void incr();
+  void incr(struct Counter *self);
 };
 
 void Counter_incl(struct Counter *self) { self->i++; }
