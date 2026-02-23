@@ -170,3 +170,23 @@ int main() {
   return 0;
 }
 ```
+
+## Implementation
+
+ - Status: Planned
+
+The implementation should first create a variable of the structure's scope for each field, then define a macro function that maps a structure-typed expression and a field name to the corresponding variable using `_Generic`. Afterwards, the implementation should replace all member access operators to this macro function. Multiple structures will yield multiple macro functions, so there must be a master macro function that ties them all together.
+
+## Discussion
+
+### Expected Benefits to Legacy C
+
+ - **B1. Code Resiliency/Safety**: 
+ - **B2. Development Productivity**: 
+ - **B3. Canonicalization**: 
+ - **B4. Code Clarity**: 
+
+### Legacy C Compatibility
+
+ - Level: 
+
