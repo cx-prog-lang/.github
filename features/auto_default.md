@@ -187,9 +187,16 @@ int main() {
 
 ## Implementation
 
- - Status: ongoing
+### Feature Dependency
 
-The implementation is divided into two parts. The first part is, at a text level, to replace the variables named `default` with a sufficiently mangled but legitimate C variable marked with the data type, such as `__<type_name>_default__`, to declare the default value variable. The second part is, at an IR level, to insert `memcpy` (or any equivalent instructions) that copies the default value variable after every instantiation if there is no explicit initialization. The second part is performed only if a default value variable exists for the given data type.
+```mermaid
+graph BT;
+  f000["F000: Object Default Value"]
+```
+
+### Summary
+
+The implementation is divided into two parts. The first part is, at a text level, to replace the variables named `default` with a sufficiently mangled but legitimate C variable marked with the data type, such as `__<type_name>_default__`, to declare the default value variable. The second part is, at an IR level, to insert `memcpy` (or any equivalent instructions) that copies the default value variable after every instantiation if there is no explicit initialization. The second part is performed only if a default value variable exists for the given data type. (Status: ongoing)
 
 ## Discussion
 
