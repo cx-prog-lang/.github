@@ -1,6 +1,6 @@
 # Object Default Value
 
- - Feature ID: F001
+ - Feature ID: F000
 
 This feature enables developers to specify the automatic default value for a data type when it is instantiated with the **automatic storage duration** (i.e., local variables). The default value is replaced with explicit variable initializations if they exist. The default value is referenceable with `default(<type_name>)` so that explicit initializers can be built on top of it. A data type will be left _uninitialized_ as per the legacy C standard if no default value was declared for it.
 
