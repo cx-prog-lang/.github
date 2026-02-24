@@ -181,7 +181,7 @@ graph BT;
   f000["F000: Object Default Value"]
   f003["F003: Method Call Operator"]
   f002 --> f000
-  f002 -..-> f003
+  f002 -.-> f003
 ```
 
  - **F000: Object Default Value** (Required): function alias structure members should be initialized through the structure's default value.
