@@ -1,5 +1,7 @@
 # Function Structure Members
 
+ - Feature ID: F002
+
 This feature allows a structure type to declare a function member field. It's equivalent to a function **pointer** member, whose [default value](./auto_default.md) is implicitly included in the struct's explicit initializers and compound literals.
 
 ## Syntax
@@ -103,9 +105,18 @@ int main() {
 
 ## Implementation
 
- - Status: Ongoing
+### Feature Dependency
 
-The implementation first needs to find a function declaration within a struct definition and enclose the identifier with `(*` and `)`. Then, at the IR level, it should insert the store instructions to copy function members' default values after explicit initializers and compound literal assignments.
+```mermaid
+graph TD:
+  f000["F000: Object Default Value"]
+  f001["F001: Function Structure Member"]
+  f000 <-- f001
+```
+
+### Summary
+
+The implementation first needs to find a function declaration within a struct definition and enclose the identifier with `(*` and `)`. Then, at the IR level, it should insert the store instructions to copy function members' default values after explicit initializers and compound literal assignments. (Status: Ongoing)
 
 ## Discussion
 
