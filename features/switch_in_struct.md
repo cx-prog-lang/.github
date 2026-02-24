@@ -177,10 +177,12 @@ int main() {
 
 ```mermaid
 graph BT;
-  f002["F002: Function Alias Struct Members"]
+  f002["F002: Function Alias Structure Members"]
   f000["F000: Object Default Value"]
   f002 --> f000
 ```
+
+ - **F000: Object Default Value** (Required): function alias structure members should be initialized through the structure's default value.
 
 ## Implementation
 
