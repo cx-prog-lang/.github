@@ -115,7 +115,7 @@ graph BT;
   f003 -.-> f002
 ```
 
- - **F002: Function Alias Structure Member** (Affected): 
+ - **F002: Function Alias Structure Member** (Affected): method call operators (and member access operators) should reference the actual function, not a structure field, for function alias structure members.
 
 ## Discussion
 
