@@ -111,10 +111,8 @@ int main() {
 ```mermaid
 graph BT;
   f003["F003: Method Call Operator"]
-  f001["F001: Function Structure Member"]
   f002["F002: Function Alias Structure Member"]
-  f003 --> f001
-  f003 --> f002
+  f003 -.-> f002
 ```
 
 ## Discussion
