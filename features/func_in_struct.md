@@ -102,10 +102,7 @@ int main() {
   return 0;
 }
 ```
-
-## Implementation
-
-### Feature Dependency
+## Feature Dependency
 
 ```mermaid
 graph BT;
@@ -114,9 +111,9 @@ graph BT;
   f001 --> f000
 ```
 
-### Summary
+## Implementation
 
-The implementation first needs to find a function declaration within a struct definition and enclose the identifier with `(*` and `)`. Then, at the IR level, it should insert the store instructions to copy function members' default values after explicit initializers and compound literal assignments. (Status: Ongoing)
+The implementation first needs to find a function declaration within a struct definition and enclose the identifier with `(*` and `)`. Then, at the IR level, it should insert the store instructions to copy function members' default values after explicit initializers and compound literal assignments. (Status: ongoing)
 
 ## Discussion
 
