@@ -15,3 +15,11 @@ Below are the features under consideration.
 
  - [Pointer Bound Checking Compiler Option](./ptr_boundck.md): enable pointer bound checking for every pointer.
  - [Pointer Sanitization Compiler Option](./ptr_sanitize.md): sanitize every pointer to `0` after memory deallocation.
+
+## Feature Dependency
+
+Each feature page includes a feature dependency diagram that shows the relationships between features. The relationship falls into three categories:
+
+ - **Required**: a feature requires another feature to be complete. (Solid line)
+ - **Affected**: a feature can be affected by another feature in implementation or in design. (Dotted line)
+ - **None**: two features are independent in implementation and in design. (Not described)
