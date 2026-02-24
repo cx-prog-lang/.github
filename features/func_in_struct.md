@@ -111,6 +111,8 @@ graph BT;
   f001 --> f000
 ```
 
+ - **F000: Object Default Value"** (Required): function structure members should be initialized through the structure's default value.
+
 ## Implementation
 
 The implementation first needs to find a function declaration within a struct definition and enclose the identifier with `(*` and `)`. Then, at the IR level, it should insert the store instructions to copy function members' default values after explicit initializers and compound literal assignments. (Status: ongoing)
