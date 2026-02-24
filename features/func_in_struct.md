@@ -109,9 +109,9 @@ int main() {
 
 ```mermaid
 graph TD;
-  f000["F000: Object Default Value"];
-  f001["F001: Function Structure Member"];
-  f000 <-- f001;
+  f000["F000: Object Default Value"]
+  f001["F001: Function Structure Member"]
+  f001 --> f000
 ```
 
 ### Summary
