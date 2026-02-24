@@ -1,6 +1,6 @@
 # Function Structure Members
 
- - Feature ID: F002
+ - Feature ID: F001
 
 This feature allows a structure type to declare a function member field. It's equivalent to a function **pointer** member, whose [default value](./auto_default.md) is implicitly included in the struct's explicit initializers and compound literals.
 
