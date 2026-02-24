@@ -1,4 +1,4 @@
-# Function Alias Struct Members
+# Function Alias Struct Members (F002)
 
 This feature declares a list of function alias members in a structure. Function alias members don't alter the structure's memory layout, as they don't _store_ function pointers like function members do. Instead, function alias members are statically linked to the functions specified in the default value.
 
@@ -171,11 +171,18 @@ int main() {
 }
 ```
 
+## Feature Dependency
+
+```mermaid
+graph BT;
+  f002["F002: Function Alias Struct Members"]
+  f000["F000: Object Default Value"]
+  f002 --> f000
+```
+
 ## Implementation
 
- - Status: Planned
-
-The implementation should first create a variable of the structure's scope for each field, then define a macro function that maps a structure-typed expression and a field name to the corresponding variable using `_Generic`. Afterwards, the implementation should replace all member access operators to this macro function. Multiple structures will yield multiple macro functions, so there must be a master macro function that ties them all together.
+The implementation should first create a variable of the structure's scope for each field, then define a macro function that maps a structure-typed expression and a field name to the corresponding variable using `_Generic`. Afterwards, the implementation should replace all member access operators to this macro function. Multiple structures will yield multiple macro functions, so there must be a master macro function that ties them all together. (Status: planned)
 
 ## Discussion
 
