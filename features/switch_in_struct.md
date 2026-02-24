@@ -185,7 +185,7 @@ graph BT;
 ```
 
  - **F000: Object Default Value** (Required): function alias structure members should be initialized through the structure's default value.
- - **F003: Method Call Operator** (Affected): method call operators (and member access operators) should reference the actual function, not a structure field, for function alias structure members.
+ - **F003: Method Call Operator** (Affected): function alias structure members through a method call operator (or a member access operator) should yield the statically-linked function, not a structure member.
 
 ## Implementation
 
