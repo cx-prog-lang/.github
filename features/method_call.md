@@ -106,7 +106,7 @@ int main() {
 }
 ```
 
-# Feature Dependency
+## Feature Dependency
 
 ```mermaid
 graph BT;
@@ -117,9 +117,9 @@ graph BT;
   f003 --> f002
 ```
 
-# Discussion
+## Discussion
 
-## Expected Benefits to Legacy C
+### Expected Benefits to Legacy C
 
  - **B3. Canonicalization**: provides a canonical way to use the functions intended to act on a structure.
  - **B4. Code Clarity**: removes verbosity in the combination of a member access and a call.
