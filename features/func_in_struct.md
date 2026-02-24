@@ -108,7 +108,7 @@ int main() {
 ### Feature Dependency
 
 ```mermaid
-graph TD:
+graph TD;
   f000["F000: Object Default Value"]
   f001["F001: Function Structure Member"]
   f000 <-- f001
