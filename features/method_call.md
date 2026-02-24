@@ -1,5 +1,7 @@
 # Method Call Operator
 
+ - Feature ID: F003
+
 This feature introduces a new operator called _method call operator_, which calls a structure's callable member (i.e., function pointer member, [function member](./func_in_struct.md), or [function alias member](./switch_in_struct.md)) with the 0th argument of a reference to the structure instance.
 
 ## Syntax
@@ -102,6 +104,16 @@ int main() {
 
   return 0;
 }
+```
+
+# Feature Dependency
+
+```mermaid
+graph BT;
+  f003["F003: Method Call Operator"]
+  f001["F001: Function Structure Member"]
+  f002["F002: Function Alias Structure Member"]
+  f003 --> {f001, f002}
 ```
 
 # Discussion
