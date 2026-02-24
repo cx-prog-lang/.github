@@ -1,4 +1,4 @@
-# Function Alias Struct Members (F002)
+# Function Alias Struct Members (ID: F002)
 
 This feature declares a list of function alias members in a structure. Function alias members don't alter the structure's memory layout, as they don't _store_ function pointers like function members do. Instead, function alias members are statically linked to the functions specified in the default value.
 
