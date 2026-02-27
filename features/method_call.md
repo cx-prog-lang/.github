@@ -108,6 +108,15 @@ int main() {
 
 ## Feature Dependency
 
+### Design
+
+```mermaid
+graph BT;
+  f003["F003: Method Call Operator"]
+```
+
+### Implementation
+
 ```mermaid
 graph BT;
   f003["F003: Method Call Operator"]
@@ -119,7 +128,6 @@ graph BT;
 
 ## Discussion
 
-### Expected Benefits to Legacy C
+### Legacy C Compatibility
 
- - **B3. Canonicalization**: provides a canonical way to use the functions intended to act on a structure.
- - **B4. Code Clarity**: removes verbosity in the combination of a member access and a call.
+This feature is **transparent** to legacy C code, as a curly bracket (`{`) followed by an identifier wasn't a legal case in C.
