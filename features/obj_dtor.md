@@ -85,5 +85,5 @@ void break(struct Context prev) {
 
 ## Caveat
 
- - The cleanup function is **not** called automatically at the end of the object's storage duration.
+ - The cleanup function is a convention and is **not** called automatically in any way (e.g., at the end of the object's storage duration).
  - For a composite type, the member's cleanup function is **not** automatically called recursively.
