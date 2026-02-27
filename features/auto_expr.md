@@ -2,7 +2,7 @@
 
  - Feature ID: F006
 
-This feature defers the evaluation of the provided expression until the current scope exits (e.g., at the end of scope or via a goto). The evaluation timing is the same as the deallocation of (non-VLA) automatic objects, hence the name "_automatic_".
+This feature defers the evaluation of the provided expression until the current scope exits (e.g., at the end of the scope or via a goto). The evaluation timing is the same as the deallocation of (non-VLA) automatic objects, hence the name "_automatic_".
 
 ## Syntax
 
@@ -12,7 +12,7 @@ auto <expr>
 
 ## Specification
 
-The automatic expression is equivalent to the compiler action that inserts the deferred expression in it at the end of every possible scope exit.
+The automatic expression is equivalent to the compiler action that inserts the expression at the end of every possible scope exit.
 
 If multiple automatic expressions exist in the same scope, the expression that appears first will be evaluated last ("LIFO-style").
 
