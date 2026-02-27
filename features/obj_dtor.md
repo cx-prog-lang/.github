@@ -2,7 +2,7 @@
 
  - Feature ID: F005
 
-This feature suggests a canonical function for the object _value_ cleanup per data type (a.k.a. _destructors_). The cleanup functions may be defined as a function named `break` with its target data type as the only argument, and can be called by `break(<obj>)`. By default, undefined cleanup functions are no-op.
+This feature suggests a canonical function for the object _value_ cleanup per data type (a.k.a. _destructors_). The cleanup functions can be optionally defined as a function named `break` with its target data type as the only argument, and can be called by `break(<obj>)`. By default, undefined cleanup functions are no-op.
 
 ## Syntax
 
