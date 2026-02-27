@@ -42,7 +42,7 @@ void break(struct RCElem prev) {
 
 In the above example, `break(*prev.o)` will be linked to the cleanup function for `struct Elem` (i.e., `void break(struct Elem)`) if it exists, or a no-op function if it doesn't. 
 
-Or, if `RCElem` is to be implemented in an entirely decoupled way with object allocation (i.e., the users of `RCElem` are responsible for the (de)allocation of `struct Elem`), `break(*prev.o); free(prev.o);` could be replaced with `break(prev.o)`. Then, it will be linked to the cleanup function for `struct Elem *` (i.e., `void break(struct Elem *)`) and be posited to deallocate the pointee object if needed.
+Or, if `RCElem` is to be implemented in an entirely decoupled way with object allocation (i.e., the users of `RCElem` are responsible for the (de)allocation of `struct Elem`), `break(*prev.o); free(prev.o);` could be replaced with `break(prev.o)`. Then, it will be linked to the cleanup function for `struct Elem *` (i.e., `void break(struct Elem *)`).
 
 ```c
 struct RCElem {
@@ -64,6 +64,8 @@ void break(struct RCElem prev) {
   }
 }
 ```
+
+Then, the users of `RCElem` can implement the cleanup function for `struct Elem *` to internally deallocate the pointer.
 
 The canonical object value cleanup function also allows for cleaning up child members of a structure without hard-coding the specific name of the cleanup functions for each member. In this example, the structure `Context` cleans up the members `data`, `record`, and `cache` with the same canonical name `break`.
 
