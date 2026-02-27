@@ -14,13 +14,13 @@ void break(<data_type> [<arg_name>]) {
 
 ## Example
 
-The canonicalization of object value destructors provides a generic way to semantically clean up objects. As a prime example, a composite type can clean up its members without knowing their existence. This example shows a reference counter structure for `int` type objects (`RCInt`), which automatically cleans up the allocated `int` object when it's deallocated. (For clarity, the object allocation and reference counting logics were omitted.)
+The canonicalization of object value destructors provides a generic way to semantically clean up objects. As a prime example, a composite type can clean up its members without knowing their existence. This example shows a reference counter structure for `struct Elem` type objects (`RCElem`), which automatically cleans up the allocated `struct Elem` object when it's deallocated. (For clarity, the object allocation and reference counting logics were omitted.)
 
 ```c
 #include <stdlib.h>
 
 struct RCInt {
-  int *o;
+  struct Elem *o;
   int *_refcount;
 };
 
@@ -36,7 +36,7 @@ void break(struct RCInt prev) {
 }
 ```
 
-In the above example, `break(prev.o)` will be linked to the cleanup function for `int *` (i.e., `void break(int *)`) if it exists, or a no-op function if it doesn't. 
+In the above example, `break(prev.o)` will be linked to the cleanup function for `struct Elem *` (i.e., `void break(struct Elem *)`) if it exists, or a no-op function if it doesn't. 
 
 The canonical object value cleanup function also allows for cleaning up child members of a structure without hard-coding the specific name of the cleanup functions for each member. In this example, the structure `Context` cleans up the members `data`, `record`, and `cache` with the same canonical name `break`.
 
