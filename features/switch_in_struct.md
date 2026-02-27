@@ -173,7 +173,24 @@ int main() {
 }
 ```
 
+## Implementation
+
+The implementation should first create a variable of the structure's scope for each field, then define a macro function that maps a structure-typed expression and a field name to the corresponding variable using `_Generic`. Afterwards, the implementation should replace all member access operators to this macro function. Multiple structures will yield multiple macro functions, so there must be a master macro function that ties them all together. (Status: planned)
+
 ## Feature Dependency
+
+### Design
+
+```mermaid
+graph BT;
+  f002["F002: Function Alias Structure Members"]
+  f000["F000: Object Default Value"]
+  f002 --> f000
+```
+
+ - **F000: Object Default Value** (Required): function alias structure members should be initialized through the structure's default value.
+
+### Implementation
 
 ```mermaid
 graph BT;
@@ -186,10 +203,6 @@ graph BT;
 
  - **F000: Object Default Value** (Required): function alias structure members should be initialized through the structure's default value.
  - **F003: Method Call Operator** (Affected): function alias structure members through a method call operator (or a member access operator) should yield the statically-linked function, not a structure member.
-
-## Implementation
-
-The implementation should first create a variable of the structure's scope for each field, then define a macro function that maps a structure-typed expression and a field name to the corresponding variable using `_Generic`. Afterwards, the implementation should replace all member access operators to this macro function. Multiple structures will yield multiple macro functions, so there must be a master macro function that ties them all together. (Status: planned)
 
 ## Discussion
 
