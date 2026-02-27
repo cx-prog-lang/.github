@@ -193,14 +193,7 @@ The implementation should first create a variable of the structure's scope for e
 
 ## Discussion
 
-### Expected Benefits to Legacy C
-
- - **B1. Code Resiliency/Safety**: 
- - **B2. Development Productivity**: 
- - **B3. Canonicalization**: 
- - **B4. Code Clarity**: 
-
 ### Legacy C Compatibility
 
- - Level: 
+(Level: transparent) This feature is transparent to legacy C code, as specifying a label inside a structure definition hasn't been legal. Also, this feature reuses an existing keyword (`switch`), so there is no keyword-identifier collision.
 
