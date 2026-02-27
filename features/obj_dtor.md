@@ -19,14 +19,14 @@ The canonicalization of object value destructors provides a generic way to seman
 ```c
 #include <stdlib.h>
 
-struct RCInt {
+struct RCElem {
   struct Elem *o;
   int *_refcount;
 };
 
 // ...
 
-void break(struct RCInt prev) {
+void break(struct RCElem prev) {
   if (!prev.o) return;
   if (*prev._refcount == 0) {
     break(prev.o);
