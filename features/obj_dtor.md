@@ -1,5 +1,7 @@
 # Canonical Object Value Destructor
 
+ - Feature ID: F005
+
 This feature introduces a reserved function name, `break`, for the object _value_ destructor functions. The destructor may be defined as a function named `break` with its target data type as the only argument, and can be called by `break(<obj>)`. By default, the destructors are no-op if undefined.
 
 ## Syntax
