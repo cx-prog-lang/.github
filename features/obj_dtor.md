@@ -42,7 +42,7 @@ void break(struct RCElem prev) {
 
 In the above example, `break(*prev.o)` will be linked to the cleanup function for `struct Elem` (i.e., `void break(struct Elem)`) if it exists, or a no-op function if it doesn't. 
 
-Or, if `RCElem` is to be implemented in an entirely decoupled way with object allocation (i.e., `RCElem` doesn't allocate or deallocate objects), `break(*prev.o); free(prev.o);` could be replaced with `break(prev.o)`. Then, it will be linked to the cleanup function for `struct Elem *` (i.e., `void break(struct Elem *)`) and be posited to deallocate the pointee object if needed.
+Or, if `RCElem` is to be implemented in an entirely decoupled way with object allocation (i.e., the users of `RCElem` are responsible for the (de)allocation of `struct Elem`), `break(*prev.o); free(prev.o);` could be replaced with `break(prev.o)`. Then, it will be linked to the cleanup function for `struct Elem *` (i.e., `void break(struct Elem *)`) and be posited to deallocate the pointee object if needed.
 
 ```c
 struct RCElem {
