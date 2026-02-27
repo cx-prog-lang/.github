@@ -9,12 +9,12 @@ This directory introduces the features of the Cx languages built on top of the s
  - [Internal Structure Members](./internal_member.md): indicate the structure members that function (alias) members are only expected to access directly.
  - [Canonical Object Cleanup Function](./obj_dtor.md): define a canonical function to clean up an object value per data type.
  - [Automatic Expression](./auto_expr.md): denote an expression to be executed when the block is exited, instead of now.
- - [Type Generic Macro](./type_gen.md): pass data types as the arguments to a data type or a function.
+ - [Type Generic Macro]: pass data types as the arguments to a data type or a function.
 
 Below are the features under consideration.
 
- - [Pointer Bound Checking Compiler Option](./ptr_boundck.md): enable pointer bound checking for every pointer.
- - [Pointer Sanitization Compiler Option](./ptr_sanitize.md): sanitize every pointer to `0` after memory deallocation.
+ - [Pointer Bound Checking Compiler Option]: enable pointer bound checking for every pointer.
+ - [Pointer Sanitization Compiler Option]: sanitize every pointer to `0` after memory deallocation.
 
 ## Feature Dependency
 
