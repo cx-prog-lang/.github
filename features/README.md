@@ -13,8 +13,8 @@ This directory introduces the features of the Cx languages built on top of the s
 
 Below are the features under consideration.
 
- - Pointer Bound Checking Compiler Option: enable pointer bound checking for every pointer.
- - Pointer Sanitization Compiler Option: sanitize every pointer to `0` after memory deallocation.
+ - __Pointer Bound Checking Compiler Option__: enable pointer bound checking for every pointer.
+ - __Pointer Sanitization Compiler Option__: sanitize every pointer to `0` after memory deallocation.
 
 ## Feature Dependency
 
