@@ -9,7 +9,7 @@ This directory introduces the features of the Cx languages built on top of the s
  - [Internal Structure Members](./internal_member.md): indicate the structure members that function (alias) members are only expected to access directly.
  - [Canonical Object Cleanup Function](./obj_dtor.md): define a canonical function to clean up an object value per data type.
  - [Automatic Expression](./auto_expr.md): denote an expression to be executed when the block is exited, instead of now.
- - Type Generic Macro: pass data types as the arguments to a data type or a function.
+ - __Type Generic Macro__: pass data types as the arguments to a data type or a function.
 
 Below are the features under consideration.
 
