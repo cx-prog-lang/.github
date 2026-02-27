@@ -77,4 +77,4 @@ int main() {
 }
 ```
 
- - 
+ - The automatic expressions inside a loop will be evaluated at the end of every loop iteration.
