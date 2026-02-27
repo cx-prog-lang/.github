@@ -12,7 +12,7 @@ auto <expr>
 
 ## Specification
 
-The automatic expression is equivalent to the compiler action that inserts the expression at the end of every possible scope exit.
+The automatic expression is equivalent to the compiler action that inserts the actual expression at the end of every possible scope exit.
 
 If multiple automatic expressions exist in the same scope, the expression that appears first will be evaluated last ("LIFO-style").
 
