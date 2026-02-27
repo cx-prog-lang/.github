@@ -14,7 +14,7 @@ void break(<data_type> [<arg_name>]) {
 
 ## Example
 
-The canonicalization of object value destructors provides a generic way to semantically clean up objects. As a prime example, a composite type can clean up its members without knowing their existence. This example shows a reference counter structure for `struct Elem` type objects (`RCElem`), which automatically cleans up the allocated `struct Elem` object when it should be deallocated. (For clarity, the object allocation and reference counting logics were omitted.)
+The canonicalization of object value destructors provides a generic way to semantically clean up objects. As a prime example, a composite type can clean up its members without knowing their existence. This example shows a reference counter structure for `struct Elem` type objects (`RCElem`), which automatically cleans up the allocated `struct Elem` object when it should be deallocated. (For clarity, the reference counting logic was omitted.)
 
 ```c
 #include <stdlib.h>
@@ -23,6 +23,10 @@ struct RCElem {
   struct Elem *o;
   int *_refcount;
 };
+
+struct RCElem RCElem_create() {
+  return (struct RCElem){ .o = malloc(sizeof(struct Elem)), ._refcount = 1 };
+}
 
 // ...
 
@@ -36,7 +40,30 @@ void break(struct RCElem prev) {
 }
 ```
 
-In the above example, `break(*prev.o)` will be linked to the cleanup function for `struct Elem` (i.e., `void break(struct Elem)`) if it exists, or a no-op function if it doesn't. Also, if `RCElem` is to be implemented in an entirely decoupled way with object allocation (i.e., `RCElem` doesn't allocate or deallocate objects), `break(*prev.o); free(prev.o);` could be replaced with `break(prev.o)`. Then, it will be linked to the cleanup function for `struct Elem *` (i.e., `void break(struct Elem *)`) and be posited to deallocate the pointee object if needed.
+In the above example, `break(*prev.o)` will be linked to the cleanup function for `struct Elem` (i.e., `void break(struct Elem)`) if it exists, or a no-op function if it doesn't. 
+
+Or, if `RCElem` is to be implemented in an entirely decoupled way with object allocation (i.e., `RCElem` doesn't allocate or deallocate objects), `break(*prev.o); free(prev.o);` could be replaced with `break(prev.o)`. Then, it will be linked to the cleanup function for `struct Elem *` (i.e., `void break(struct Elem *)`) and be posited to deallocate the pointee object if needed.
+
+```c
+struct RCElem {
+  struct Elem *o;
+  int *_refcount;
+};
+
+struct RCElem RCElem_create(struct Elem *init) {
+  return (struct RCElem){ .o = init, ._refcount = 1 };
+}
+
+// ...
+
+void break(struct RCElem prev) {
+  if (!prev.o) return;
+  if (*prev._refcount == 0) {
+    break(prev.o);
+    // ...
+  }
+}
+```
 
 The canonical object value cleanup function also allows for cleaning up child members of a structure without hard-coding the specific name of the cleanup functions for each member. In this example, the structure `Context` cleans up the members `data`, `record`, and `cache` with the same canonical name `break`.
 
