@@ -33,7 +33,7 @@ Cx aims to piggyback on the well-established C build pipeline. To do so, Cx just
 
 ## Benefit Categories
 
-Cx features consider the following categories of potential benefits to legacy C:
+Cx features consider the following categories of potential benefits to vanilla C:
 
  - **B1. Code Resiliency/Safety**: improves code resiliency and safety against future use or changes.
  - **B2. Development Productivity**: promotes productivity in using the language.
