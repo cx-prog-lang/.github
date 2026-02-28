@@ -21,7 +21,7 @@ Below are the features under consideration.
 Each feature page includes a feature dependency diagram that shows the relationships between features. The relationship falls into three categories:
 
  - **Required**: a feature requires another feature to be complete. (Solid line)
- - **Affected**: a feature can be affected by another feature in implementation or in design. (Dotted line)
+ - **Affected**: a feature can be affected by another feature. (Dotted line)
  - **None**: the features are independent in implementation and in design. (Not described)
 
 The diagram only describes direct relationships; indirect relationships are applied transitively, with priority given to stronger dependencies (Required > Affected > None).
