@@ -9,25 +9,25 @@ This feature introduces a new operator called _method call operator_, which call
 ### Direct method call operator
 
 ```c
-<struct_var> . <func_ptr_member_name> { [<arg_list>] }
+<struct_var> . <callable_member_name> { [<arg_list>] }
 ```
 
  - `<struct_var>`: structure variable (or any expression that has a structure type)
- - `<func_ptr_member_name>`: function pointer member's name
+ - `<callable_member_name>`: callable member's name
  - `<arg_list>`: list of arguments for the function pointer
 
-Equivalent to a combination of a direct member access operator followed by a call operator, whose 0th argument is a reference to the structure instance. (i.e., `<struct_var> . <func_ptr_member_name> ( &<struct_var> [,<arg_list>] )`)
+Equivalent to a combination of a direct member access operator followed by a call operator, whose 0th argument is a reference to the structure instance. (i.e., `<struct_var> . <callable_member_name> ( &<struct_var> [,<arg_list>] )`)
 
 ### Indirect method call operator
 
 ```c
-<struct_ptr> -> <func_ptr_member_name> { [<arg_list>] }
+<struct_ptr> -> <callable_member_name> { [<arg_list>] }
 ```
  - `<struct_ptr>`: structure pointer (or any expression that has a structure pointer type)
- - `<func_ptr_member_name>`: function pointer member's name
+ - `<callable_member_name>`: callable member's name
  - `<arg_list>`: list of arguments for the function pointer
 
-Equivalent to a combination of an indirect member access operator followed by a call operator, whose 0th argument is a structure pointer. (i.e., `<struct_ptr> -> <func_ptr_member_name> ( <struct_ptr> [,<arg_list>] )`)
+Equivalent to a combination of an indirect member access operator followed by a call operator, whose 0th argument is a structure pointer. (i.e., `<struct_ptr> -> <callable_member_name> ( <struct_ptr> [,<arg_list>] )`)
 
 ## Specification
 
