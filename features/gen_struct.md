@@ -69,13 +69,13 @@ A generic structure can also have its [default value](./auto_default.md) and the
 
 struct Test<T> { T field; };
 
-// 'default' and 'break' for any actual type.
-struct Test<T> default = { .field = 0 };
-void break(struct Test<T> prev) { printf("generic break\n"); }
-
 // 'default' and 'break' when the actual type is 'int'.
 struct Test<int> default = { .field = 32 };
 void break(struct Test<int> prev) { printf("int break\n"); }
+
+// 'default' and 'break' for any other actual type.
+struct Test<T> default = { .field = 0 };
+void break(struct Test<T> prev) { printf("generic break\n"); }
 ```
 
 # Caveat
