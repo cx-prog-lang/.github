@@ -28,6 +28,8 @@ struct <struct_name> < <concrete_type_list> >
 
 Generic structures are not data types on their own. Instead, they become actual data types when they are _instantiated_. For this reason, a generic struct cannot be used as a data type of global variables (**except the [default value](./auto_default.md)**), function return types, or function argument types (**except the [cleanup function](./obj_dtor.md)**).
 
+The instantiated generic structures are inserted in the current translation unit, at the closest previous global scope of the instantiation point.
+
 The default values and the cleanup functions for generic structures are instantiated when the generic structures themselves are instantiated. They can also be _specialized_ for specific actual types, in which case those definitions take precedence over those with generic types. Specialized definitions may reuse the bodies of generic definitions by specifying `...` for their bodies, in which all generic types are replaced with actual types.
 
 The concrete types provided to generic structures can be any valid _global_ data types (or any expressions that are resolved to valid _global_ data types) at the time of instantiation.
