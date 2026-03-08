@@ -89,6 +89,26 @@ struct Test<U> foo<U>() { return (struct Test<U>){ .field = 0 }; }
 V bar<V>(struct Test<V> in) { return in.v + in.v; }
 ```
 
+ - It's **invalid** to declare generic types again when the enclosing scope already declared generic types. This can be avoided by making the enclosing scope declare _all_ generic types used inside. In the bad example, `TestInner<U>` generates a compile error as the enclosing scope (`TestOuter<T>`) already declared a generic type. On the other hand, the good example declares all generic types in the enclosing scope (`TestOuter<T, U>`).
+
+```c
+// Bad example
+struct TestOuter<T> {       // 'TestOuter' declares a generic type (T).
+  T field1;
+  struct TestInner<U> {     // Compile error: the enclosing scope already declared a generic type (T).
+    U field2;
+  } in;
+};
+
+// Good example
+struct TestOuter<T, U> {    // 'TestOuter' declares all generic types inside (T and U).
+  T field1;
+  struct TestInner {        // 'TestInner' uses one of the generic types (U).
+    U field2;
+  } in;
+};
+```
+
  - The default value and the cleanup function **can** reference generic types inside their bodies. In this case, the generic types are declared in the angle brackets next to the structure name. In the following example, the default value and the cleanup function reference the generic type `T` within their bodies.
 
 ```c
