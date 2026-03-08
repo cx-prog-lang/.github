@@ -124,5 +124,5 @@ struct Test<T> default = {
 
 void break(struct Test<T> prev) {
   break(prev.field);
-};
+}
 ```
