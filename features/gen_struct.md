@@ -96,6 +96,14 @@ V bar<V>(struct Test<V> in) { return in.v + in.v; }
 
 struct Test<T> { T field };
 
-struct Test<T> default = { .field = (T)0 };
-void break(struct Test<T> prev) { _Generic(T, int: printf("%d\n", prev.field), default: (void)0); };
+struct Test<T> default = {
+  .field = (T)0
+};
+
+void break(struct Test<T> prev) {
+  _Generic(T,
+    int: printf("%d\n", prev.field),
+    default: (void)0
+  );
+};
 ```
