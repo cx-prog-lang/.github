@@ -36,7 +36,7 @@ When generic structures are instantiated, their [default values](./auto_default.
 
 # Example
 
-Generic structures are very similar to C++ template structures, except that they lack a separate template variable declaration. In the following example, the generic structure `Test1` has one generic type `T`, whereas `Test2` has two generic types `T` and `U`. The generic types are treated as ordinary data types in the structure body.
+Generic structures are very similar to C++ template structures, except that they lack a separate template variable declaration. In the following example, the generic structure `Test1` has one generic type `T`, whereas `Test2` has two generic types `T` and `U`. The generic types are treated as normal data types in the structure body.
 
 ```c
 struct Test1<T> { T field; };
