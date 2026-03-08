@@ -97,7 +97,7 @@ V bar<V>(struct Test<V> in) { return in.v + in.v; }
 struct Test<T> { T field };
 
 struct Test<T> default = {
-  .field = (T)0
+  .field = default(T)
 };
 
 void break(struct Test<T> prev) {
