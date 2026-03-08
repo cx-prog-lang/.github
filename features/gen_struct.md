@@ -82,13 +82,12 @@ void break(struct Test<T> prev) { printf("generic break\n"); }
 
 # Caveat
 
- - It's **valid** to instantiate generic structures with the generic types of the enclosing scope. For example, the following example instantiates the generic structure `struct Test<T>` with the generic type `U` from the generic function `foo<U>` and the generic type `V` from the generic function `bar<V>`. (See: [generic functions](./gen_func.md))
+ - It's **valid** to instantiate generic structures with the generic types of the enclosing scope. For example, the following example instantiates the generic structure `struct Test<T>` with the generic type `U` from the generic function `foo<U>`. (See: [generic functions](./gen_func.md))
 
 ```c
 struct Test<T> { T field };
 
 struct Test<U> foo<U>() { return (struct Test<U>){ .field = 0 }; }
-V bar<V>(struct Test<V> in) { return in.v + in.v; }
 ```
 
  - It's **invalid** to declare generic types again when the enclosing scope already declared generic types. This can be avoided by making the enclosing scope declare _all_ generic types used inside. In the bad example, `TestInner<U>` generates a compile error as the enclosing scope (`TestOuter<T>`) already declared a generic type. On the other hand, the good example declares all generic types in the enclosing scope (`TestOuter<T, U>`).
