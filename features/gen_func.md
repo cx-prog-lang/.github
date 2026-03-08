@@ -39,5 +39,6 @@ Generic functions can be _explicitly instantiated_ ("_specialized_") by manually
 In the following cases:
  - When a generic function is explicitly instantiated.
  - When the generic function instantiation only involves declarations.
+ - When the generic function instantiation results in a function of the same type to a previously explicitly instantiated generic function.
 
 the instantiated generic function's name is _encoded_ such that the name is the same if the function type is the same. To be specific, the encoded alphanumeric string of the generic type declarator (i.e., the angle brackets and the types inside) is appended to the generic function's name, demarcated with `_`.
