@@ -2,7 +2,7 @@
 
  - Feature ID: F000
 
-This feature enables developers to specify the automatic default value for a data type when it is instantiated with the **automatic storage duration** (i.e., local variables). The default value is replaced with explicit variable initializations if they exist. The default value is referenceable with `default(<type_name>)` so that explicit initializers can be built on top of it. A data type will be left _uninitialized_ as per the legacy C standard if no default value was declared for it.
+This feature enables developers to specify the automatic default value for a data type when it is instantiated with the **automatic storage duration** (i.e., local variables). The default value is replaced with explicit variable initializations if they exist. The default value is referenceable via `default(<type_name>)` so that explicit initializers can be built on top of it. A data type will be left _uninitialized_ as per the legacy C standard if no default value was declared for it.
 
 ## Syntax
 
@@ -28,6 +28,8 @@ For array types, each array element will be initialized to its default value if 
 For pointer types, the default value of `void *` is a special default value that applies to _all_ pointer types by default. This is overridden if a specific pointer type defines its own default value. Nested pointer types don't share the same default value with un-nested counterparts (e.g., `int **` is treated as a different pointer type than `int *` in terms of a default value).
 
 All default values are compile-time constants. Also, it's illegal to take a reference to the default value.
+
+The explicit default value (`default(<data_type>)`) can be used even when the default value was undeclared; it is an empty value (i.e., zero-filled) in such a case.
 
 ## Example
 
