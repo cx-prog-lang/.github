@@ -32,8 +32,6 @@ The concrete types provided to generic structures can be any valid data types or
 
 Instantiated generic structures are the same type if i) the initial generic structure was the same, and ii) all concrete types for each generic type are the same types.
 
-When generic structures are instantiated,
-
 Generic structs _cannot_ be nested, although they can contain _instantiated_ generic structures inside.
 
 # Example
