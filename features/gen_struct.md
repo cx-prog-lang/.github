@@ -26,13 +26,13 @@ struct <struct_name> < <concrete_type_list> >
 
 # Specification
 
-Generic structures are not data types on their own. Instead, they become actual data types when they are _instantiated_. In line with this, a generic struct cannot be used as a data type of global variables (**except the [default value](./auto_default.md)**), function return types, or function argument types (**except the [cleanup function](./obj_dtor.md)**).
+Generic structures are not data types on their own. Instead, they become actual data types when they are _instantiated_. For this reason, a generic struct cannot be used as a data type of global variables (**except the [default value](./auto_default.md)**), function return types, or function argument types (**except the [cleanup function](./obj_dtor.md)**); default values and cleanup functions are instantiated when the generic structures are instantiated.
 
 The concrete types provided to generic structures can be any valid data types or any expressions that are resolved to valid data types at the time of instantiation.
 
 Instantiated generic structures are the same type if i) the initial generic structure was the same, and ii) all concrete types for each generic type are the same types.
 
-When generic structures are instantiated, their [default values](./auto_default.md) and [cleanup functions](./obj_dtor.md) are also instantiated with given concrete types.
+When generic structures are instantiated,
 
 Generic structs _cannot_ be nested, although they can contain _instantiated_ generic structures inside.
 
