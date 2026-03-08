@@ -34,11 +34,6 @@ The concrete types provided to generic functions can be any valid _global_ data 
 
 Instantiated generic functions have the same type if i) the initial generic function was the same, and ii) all concrete types for each generic type are the same types.
 
-Generic functions can be _explicitly instantiated_ ("_specialized_") by manually defining generic functions with actual types. In this case, they can reuse the body of the generic definitions by specifying `...` for their bodies. The explicitly instantiated generic functions are defined on the spot, and the generic function's storage-class specifier is ignored.
+Generic functions can be _explicitly instantiated_ ("_specialized_") by manually declaring or defining generic functions with actual types. In this case, they can reuse the body of the generic definitions by specifying `...` for their bodies. The explicitly instantiated generic functions are declared or defined on the spot, and the generic function's initial storage-class specifier is ignored.
 
-In the following cases:
- - When a generic function is explicitly instantiated.
- - When the generic function instantiation only involves declarations.
- - When the generic function instantiation results in a function of the same type to a previously explicitly instantiated generic function.
-
-the instantiated generic function's name is _encoded_ such that the name is the same if the function type is the same. To be specific, the encoded alphanumeric string of the generic type declarator (i.e., the angle brackets and the types inside) is appended to the generic function's name, demarcated with `_`.
+When a generic function is explicitly instantiated, its name is _encoded_ such that the name is the same if the function type is the same. To be specific, the encoded alphanumeric string of the generic type declarator (i.e., the angle brackets and the types inside) is appended to the generic function's name, demarcated with `_`. All following implicit instantiations (e.g., via function calls) are linked to the explicitly instantiated generic functions if they have the same function type.
