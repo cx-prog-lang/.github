@@ -62,7 +62,7 @@ struct Test<typeof(*(int*)0)> bar() {                // struct Test<typeof(*(int
 }
 ```
 
-A generic structure can also have its [default value](./auto_default.md) and the [cleanup function](./obj_dtor.md). In this case, they are also instantiated together when the generic structure is instantiated. The default value and the cleanup function can further be defined for specific actual types, as in the example below.
+A generic structure can also have its [default value](./auto_default.md) or the [cleanup function](./obj_dtor.md), which are instantiated together when the generic structure is instantiated. They can further be defined for specific data types, in which case they override the default value or the cleanup function declared with generic types. In the following example, `Test< <type> >` will use the first default value and the cleanup function if `<type>` is `int`; otherwise, it will use the second default value and the cleanup function.
 
 ```c
 #include <stdio.h>
@@ -87,4 +87,15 @@ struct Test<T> { T field };
 
 struct Test<U> foo<U>() { return (struct Test<U>){ .field = 0 }; }
 V bar<V>(struct Test<V> in) { return in.v + in.v; }
+```
+
+ - The default value and the cleanup function **can** reference generic types inside their bodies. In this case, the generic types are declared in the angle brackets next to the structure name. In the following example, the default value and the cleanup function reference the generic type `T` within their bodies.
+
+```c
+#include <stdio.h>
+
+struct Test<T> { T field };
+
+struct Test<T> default = { .field = (T)0 };
+void break(struct Test<T> prev) { _Generic(T, int: printf("%d\n", prev.field), default: (void)0); };
 ```
