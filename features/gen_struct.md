@@ -123,9 +123,6 @@ struct Test<T> default = {
 };
 
 void break(struct Test<T> prev) {
-  _Generic(T,
-    int: printf("%d\n", prev.field),
-    default: (void)0
-  );
+  break(prev.field);
 };
 ```
