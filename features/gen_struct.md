@@ -62,7 +62,7 @@ struct Test<typeof(*(int*)0)> bar() {                // struct Test<typeof(*(int
 }
 ```
 
-A generic structure can also have its [default value](./auto_default.md) and the [cleanup function](./obj_dtor.md). In this case, they are also instantiated together with the generic structure when the generic structure is instantiated. The default value and the cleanup function can further be defined for specific actual types, as in the example below.
+A generic structure can also have its [default value](./auto_default.md) and the [cleanup function](./obj_dtor.md). In this case, they are also instantiated together with the generic structure when it's instantiated. The default value and the cleanup function can further be defined for specific actual types, as in the example below.
 
 ```c
 #include <stdio.h>
