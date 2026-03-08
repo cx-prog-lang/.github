@@ -14,7 +14,7 @@ struct <struct_name> < <generic_type_list> > {
 };
 ```
 
-`<generic_type_list>` is a comma-separated list of generic types, which may be referenced like ordinary data types in `<struct_body>`.
+`<generic_type_list>` is a comma-separated list of generic types, which may be referenced like normal data types in `<struct_body>`.
 
  - Instantiation
 
