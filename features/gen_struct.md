@@ -2,7 +2,7 @@
 
  - Feature ID: GNST
 
-This feature allows for _generic structures_ that accept _generic types_ that are undetermined at the time of structure definition. The generic structures are _instantiated_ as structure types when they're referenced with concrete types in any means (e.g., variable declaration).
+This feature enables _generic structures_ that accept _generic types_ undetermined at the time of structure definition. The generic structures are _instantiated_ as structure types when they're referenced with concrete types in any means (e.g., variable declaration).
 
 # Syntax
 
