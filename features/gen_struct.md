@@ -80,7 +80,7 @@ void break(struct Test<T> prev) { printf("generic break\n"); }
 
 # Caveat
 
- - It's **valid** to instantiate generic structures with the generic types of the enclosing scope. For example, the following example instantiates the generic structure `struct Test<T>` with the generic type `U` from the generic function `foo<U>` and the generic type `V` from the generic function `bar<V>`.
+ - It's **valid** to instantiate generic structures with the generic types of the enclosing scope. For example, the following example instantiates the generic structure `struct Test<T>` with the generic type `U` from the generic function `foo<U>` and the generic type `V` from the generic function `bar<V>`. (See: [generic functions](./gen_func.md))
 
 ```c
 struct Test<T> { T field };
