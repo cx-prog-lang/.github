@@ -26,7 +26,9 @@ This feature enables _generic functions_ that accept _generic types_ undetermine
 
 # Specification
 
-Generic functions are not functions on their own. Instead, they become actual functions when they are _instantiated_. The instantiation happens in the current translation unit, at the closest previous global scope of the instantiation point. The instantiation stops at declarations if generic functions are declared but not defined in the current translation unit.
+Generic functions are not functions on their own. Instead, they become actual functions when they are _instantiated_. 
+
+The instantiated generic functions are inserted in the current translation unit, at the closest previous global scope of the instantiation point. The instantiation stops at declarations if generic functions are declared but not defined in the current translation unit.
 
 The instantiated generic functions _preserve_ the storage-class specifier of the generic functions.
 
