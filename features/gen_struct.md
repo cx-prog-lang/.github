@@ -111,7 +111,7 @@ struct TestOuter<T, U> {    // 'TestOuter' declares all generic types inside (T 
 };
 ```
 
- - The default value and the cleanup function **can** reference generic types inside their bodies. In this case, the generic types are declared in the angle brackets next to the structure name. In the following example, the default value and the cleanup function reference the generic type `T` within their bodies.
+ - The default value and the cleanup function **can** reference generic types inside their bodies. In this case, the generic types are declared with the object data type (for the default value) or the argument data type (for the cleanup function). In the following example, the default value and the cleanup function reference the generic type `T` within their bodies.
 
 ```c
 #include <stdio.h>
