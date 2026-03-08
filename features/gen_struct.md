@@ -87,7 +87,9 @@ void break(struct Test<T> prev) { printf("generic break\n"); }
 ```c
 struct Test<T> { T field };
 
-struct Test<U> foo<U>() { return (struct Test<U>){ .field = 0 }; }
+struct Test<U> foo<U>() {
+  return (struct Test<U>){ .field = 0 };
+}
 ```
 
  - It's **invalid** to declare generic types again when the enclosing scope already declared generic types. This can be avoided by making the enclosing scope declare _all_ generic types used inside. In the bad example, `TestInner<U>` generates a compile error as the enclosing scope (`TestOuter<T>`) already declared a generic type. On the other hand, the good example declares all generic types in the enclosing scope (`TestOuter<T, U>`).
