@@ -28,9 +28,9 @@ struct <struct_name> < <concrete_type_list> >
 
 Generic structures are not data types on their own. Instead, they become actual data types when they are _instantiated_. For this reason, a generic struct cannot be used as a data type of global variables (**except the [default value](./auto_default.md)**), function return types, or function argument types (**except the [cleanup function](./obj_dtor.md)**).
 
-The default values and the cleanup functions for generic structures are instantiated when the generic structures themselves are instantiated.
+The default values and the cleanup functions for generic structures are instantiated when the generic structures themselves are instantiated. They can also be _specialized_ for specific actual types, in which case those definitions take precedence over those with generic types. Specialized definitions may reuse the bodies of generic definitions by specifying `...` for their bodies, in which all generic types are replaced with actual types.
 
-The concrete types provided to generic structures can be any valid data types or any expressions that are resolved to valid data types at the time of instantiation.
+The concrete types provided to generic structures can be any valid _global_ data types (or any expressions that are resolved to valid _global_ data types) at the time of instantiation.
 
 Instantiated generic structures are the same type if i) the initial generic structure was the same, and ii) all concrete types for each generic type are the same types.
 
@@ -64,20 +64,36 @@ struct Test<typeof(*(int*)0)> bar() {                // struct Test<typeof(*(int
 }
 ```
 
-A generic structure can also have its [default value](./auto_default.md) or the [cleanup function](./obj_dtor.md), which are instantiated together when the generic structure is instantiated. They can further be defined for specific data types, in which case they override the default value or the cleanup function declared with generic types. In the following example, `Test< <type> >` will use the first default value and the cleanup function if `<type>` is `int`; otherwise, it will use the second default value and the cleanup function.
+A generic structure can also have its [default value](./auto_default.md) or the [cleanup function](./obj_dtor.md), which are instantiated together when the generic structure is instantiated. They can further be _specialized_ for specific data types, in which case they override the default value or the cleanup function declared with generic types. In the following example, `Test< <type> >` will use the second default value and the cleanup function if `<type>` is `int`; otherwise, it will use the first default value and the cleanup function.
 
 ```c
 #include <stdio.h>
 
 struct Test<T> { T field; };
 
+// 'default' and 'break' for any other actual type.
+struct Test<T> default = { .field = 0 };
+void break(struct Test<T> prev) { printf("generic break\n"); }
+
 // 'default' and 'break' when the actual type is 'int'.
 struct Test<int> default = { .field = 32 };
 void break(struct Test<int> prev) { printf("int break\n"); }
+```
+
+The specialized default value and cleanup function can reuse the generic definitions via `...`. In this example, the default value and the cleanup function specialized for `int` would have the same body as their generic counterparts.
+
+```c
+#include <stdio.h>
+
+struct Test<T> { T field; };
 
 // 'default' and 'break' for any other actual type.
 struct Test<T> default = { .field = 0 };
 void break(struct Test<T> prev) { printf("generic break\n"); }
+
+// 'default' and 'break' when the actual type is 'int'.
+struct Test<int> default = ...;
+void break(struct Test<int> prev) { ... }
 ```
 
 # Caveat
@@ -127,3 +143,5 @@ void break(struct Test<T> prev) {
   break(prev.field);
 }
 ```
+
+ - The reused body for the default value or the cleanup function **cannot** be extended.
