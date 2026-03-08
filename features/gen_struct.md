@@ -34,6 +34,8 @@ Instantiated generic structures are the same type if i) the initial generic stru
 
 When generic structures are instantiated, their [default values](./auto_default.md) and [cleanup functions](./obj_dtor.md) are also instantiated with given concrete types.
 
+Generic structs _cannot_ be nested, although they can contain _instantiated_ generic structures inside.
+
 # Example
 
 Generic structures are very similar to C++ template structures, except that they lack a separate template variable declaration. In the following example, the generic structure `Test1` has one generic type `T`, whereas `Test2` has two generic types `T` and `U`. The generic types are treated as normal data types in the structure body.
